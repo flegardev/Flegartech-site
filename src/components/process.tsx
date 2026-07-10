@@ -17,11 +17,11 @@ export function Process() {
           title="A clear path from idea to deployed product."
           description="Small enough to move fast, structured enough to avoid chaos."
         />
-        <ol className="grid gap-4 md:grid-cols-5">
+        <ol className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
           {steps.map(([title, description], index) => (
             <li
               key={title}
-              className="rounded-lg border border-white/10 bg-white/[0.035] p-5"
+              className="rounded-lg border border-white/10 bg-white/[0.035] p-5 transition hover:border-[#75b183]/35"
             >
               <div className="mb-5 grid h-10 w-10 place-items-center rounded-md bg-[#75b183] text-sm font-bold text-[#061008]">
                 {index + 1}

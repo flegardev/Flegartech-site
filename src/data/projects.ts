@@ -74,7 +74,7 @@ export const projects: Project[] = [
     ],
     caseStudy: {
       problem:
-        "Trip data from vehicles is abundant but unreadable — raw coordinates and speed logs don't tell a fleet manager which drivers are safe or where risk accumulates.",
+        "Trip data from vehicles is abundant but unreadable. Raw coordinates and speed logs don't tell a fleet manager which drivers are safe or where risk accumulates.",
       approach:
         "A monorepo with a NestJS API, React admin dashboard, transparent TypeScript scoring engine and simulation tools. The dashboard surfaces trends that matter: harsh events, risky locations, trip history and per-driver detail.",
       outcome:
@@ -235,7 +235,7 @@ export const projects: Project[] = [
     ],
     caseStudy: {
       problem:
-        "Students live on irregular income — student work, allowances, seasonal jobs — and mainstream budgeting apps assume a salary. The result is usually no budget at all.",
+        "Students live on irregular income: student work, allowances and seasonal jobs. Mainstream budgeting apps assume a salary, so the result is usually no budget at all.",
       approach:
         "A local-first budgeting app designed around irregular student income: Slovenian categories, one clear safe-to-spend number, recurring costs, mobile quick expense entry and a supporter/license flow.",
       outcome:

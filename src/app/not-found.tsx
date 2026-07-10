@@ -11,7 +11,7 @@ export default function NotFound() {
         <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#75b183]">404</p>
         <h1 className="mt-3 text-4xl font-semibold sm:text-5xl">This page doesn&apos;t exist.</h1>
         <p className="mx-auto mt-4 max-w-md text-zinc-400">
-          The link may be outdated — everything that does exist is reachable from the homepage.
+          The link may be outdated. Everything that does exist is reachable from the homepage.
         </p>
         <div className="mt-8">
           <Link

@@ -5,7 +5,7 @@ const steps = [
   {
     title: "Intro call or email",
     description:
-      "Describe the idea in whatever shape it's in — a paragraph is enough. You get an honest read on whether it's worth building and what the smallest useful version looks like.",
+      "Describe the idea in whatever shape it's in. A paragraph is enough. You get an honest read on whether it's worth building and what the smallest useful version looks like.",
     icon: MessageSquare,
   },
   {
@@ -26,7 +26,7 @@ const faqs = [
   {
     question: "How long does an MVP take?",
     answer:
-      "Most MVPs on this site took 3–6 weeks from agreed scope to a deployed product. The scoping week before that is what makes the estimate reliable.",
+      "Most MVPs on this site took 3-6 weeks from agreed scope to a deployed product. The scoping week before that is what makes the estimate reliable.",
   },
   {
     question: "What does a typical project cost?",
@@ -46,7 +46,7 @@ const faqs = [
   {
     question: "Delate v Sloveniji?",
     answer:
-      "Ja — FlegarTech deluje tudi v slovenščini. Pišite v slovenščini ali angleščini, kakor vam je lažje.",
+      "Ja. FlegarTech deluje tudi v slovenščini. Pišite v slovenščini ali angleščini, kakor vam je lažje.",
   },
 ];
 

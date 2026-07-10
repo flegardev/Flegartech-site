@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Menu, X } from "lucide-react";
+import { BrandLogo } from "@/components/brand-logo";
 
 const navItems = [
   { label: "Home", href: "/#home", section: "home" },
@@ -100,11 +100,11 @@ export function SiteHeader() {
   return (
     <header
       ref={headerRef}
-      className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#050705]/82 backdrop-blur-xl"
+      className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#050705]/86 backdrop-blur-xl"
     >
       <nav
         aria-label="Main"
-        className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
+        className="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
       >
         <Link
           href="/#home"
@@ -112,17 +112,9 @@ export function SiteHeader() {
           aria-label="FlegarTech home"
           onClick={() => setOpen(false)}
         >
-          <Image
-            src="/logo.png"
-            alt="FlegarTech logo"
-            width={188}
-            height={45}
-            preload
-            className="h-auto w-40 sm:w-48"
-            style={{ height: "auto" }}
-          />
+          <BrandLogo preload />
         </Link>
-        <div className="hidden items-center gap-7 text-sm text-zinc-300 md:flex">
+        <div className="hidden items-center gap-6 text-sm text-zinc-300 md:flex">
           {navItems.map((item) => (
             <Link
               key={item.label}
@@ -139,7 +131,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           <Link
             href="/#contact"
-            className="hidden h-11 items-center gap-2 rounded-md bg-[#75b183] px-4 text-sm font-semibold text-[#061008] shadow-[0_0_28px_rgba(117,177,131,0.25)] transition hover:bg-[#8ac897] sm:inline-flex"
+            className="hidden h-10 items-center gap-2 rounded-md bg-[#75b183] px-4 text-sm font-semibold text-[#061008] shadow-[0_16px_40px_rgba(117,177,131,0.16)] transition hover:bg-[#8ac897] active:translate-y-px sm:inline-flex"
           >
             Start a Project
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -150,7 +142,7 @@ export function SiteHeader() {
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="grid h-11 w-11 place-items-center rounded-md border border-white/15 text-zinc-200 transition hover:border-[#75b183]/60 hover:text-white md:hidden"
+            className="grid h-10 w-10 place-items-center rounded-md border border-white/15 text-zinc-200 transition hover:border-[#75b183]/60 hover:text-white md:hidden"
           >
             {open ? (
               <X className="h-5 w-5" aria-hidden="true" />

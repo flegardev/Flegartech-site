@@ -36,7 +36,7 @@ export async function sendContactMessage(
   if (!apiKey) {
     return {
       status: "unconfigured",
-      message: "Direct sending is not set up yet — opening your email app instead.",
+      message: "Direct sending is not set up yet. Opening your email app instead.",
     };
   }
 
@@ -51,7 +51,7 @@ export async function sendContactMessage(
       to: [process.env.CONTACT_TO_EMAIL ?? siteConfig.email],
       reply_to: email,
       subject: `Project inquiry from ${name}`,
-      text: `${message}\n\n— ${name} (${email})`,
+      text: `${message}\n\n- ${name} (${email})`,
     }),
   });
 
@@ -63,5 +63,5 @@ export async function sendContactMessage(
     };
   }
 
-  return { status: "sent", message: "Thanks! Your message has been sent — expect a reply soon." };
+  return { status: "sent", message: "Thanks! Your message has been sent. Expect a reply soon." };
 }

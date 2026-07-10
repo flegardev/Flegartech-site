@@ -27,7 +27,7 @@ export function TechStack() {
           {techStack.map((tech) => (
             <div
               key={tech}
-              className="grid min-h-20 place-items-center rounded-md border border-white/10 bg-white/[0.035] px-3 text-center text-sm font-semibold text-zinc-200 transition hover:border-[#75b183]/45 hover:text-white"
+              className="grid min-h-20 place-items-center rounded-md border border-white/10 bg-[#050705]/70 px-3 text-center text-sm font-semibold text-zinc-200 transition hover:border-[#75b183]/45 hover:bg-[#75b183]/[0.055] hover:text-white"
             >
               {tech}
             </div>

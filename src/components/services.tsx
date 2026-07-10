@@ -56,13 +56,15 @@ export function Services() {
           title="Focused builds for web products and internal systems."
           description="Everything is shaped around practical outcomes: launch faster, operate cleaner and make the product easier to trust."
         />
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => {
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-6">
+          {services.map((service, index) => {
             const Icon = service.icon;
             return (
               <article
                 key={service.title}
-                className="group reveal rounded-lg border border-white/10 bg-white/[0.035] p-6 transition duration-300 hover:-translate-y-1 hover:border-[#75b183]/45 hover:bg-[#75b183]/[0.055]"
+                className={`group reveal rounded-lg border border-white/10 bg-white/[0.035] p-6 transition duration-300 hover:-translate-y-1 hover:border-[#75b183]/45 hover:bg-[#75b183]/[0.055] ${
+                  index < 2 ? "lg:col-span-3" : "lg:col-span-2"
+                }`}
               >
                 <div className="mb-5 grid h-12 w-12 place-items-center rounded-md bg-[#75b183]/12 text-[#75b183] ring-1 ring-[#75b183]/25">
                   <Icon className="h-6 w-6" aria-hidden="true" />

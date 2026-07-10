@@ -27,11 +27,11 @@ CI (`.github/workflows/ci.yml`) runs the same two commands on every push and pul
 
 ## Structure
 
-- `src/app/` — routes: homepage, `/projects`, `/projects/[slug]` (case studies), `/blog`, `/blog/[slug]`
-- `src/components/` — one component per section (header, hero, services, projects, engagement/FAQ, contact, footer)
-- `src/data/site.ts` — site identity: name, URL, email, GitHub (used by metadata, sitemap, robots, manifest)
-- `src/data/projects.ts` — project cards and case-study content; `featured: true` controls the homepage selection
-- `src/data/posts.ts` — blog posts as typed content blocks
+- `src/app/` - routes: homepage, `/projects`, `/projects/[slug]` (case studies), `/blog`, `/blog/[slug]`
+- `src/components/` - one component per section (header, hero, services, projects, engagement/FAQ, contact, footer)
+- `src/data/site.ts` - site identity: name, URL, email, GitHub (used by metadata, sitemap, robots, manifest)
+- `src/data/projects.ts` - project cards and case-study content; `featured: true` controls the homepage selection
+- `src/data/posts.ts` - blog posts as typed content blocks
 
 ## Contact Form
 

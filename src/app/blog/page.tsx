@@ -8,7 +8,7 @@ import { posts } from "@/data/posts";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Notes on building MVPs, dashboards and practical software — how FlegarTech scopes, builds and ships.",
+    "Notes on building MVPs, dashboards and practical software: how FlegarTech scopes, builds and ships.",
   alternates: { canonical: "/blog" },
 };
 
@@ -34,7 +34,7 @@ export default function BlogPage() {
               Notes on building practical software.
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg">
-              How FlegarTech scopes MVPs, picks stacks and designs tools people keep using — written
+              How FlegarTech scopes MVPs, picks stacks and designs tools people keep using, written
               from the projects on this site.
             </p>
           </div>

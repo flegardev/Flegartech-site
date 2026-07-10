@@ -26,7 +26,7 @@ export default function ProjectsPage() {
             </h1>
             <p className="mt-4 text-base leading-7 text-zinc-400 sm:text-lg">
               MVPs that work today, products in active development and experiments that feed the
-              production work — each with real project context and selected screenshots where
+              production work. Each has real project context and selected screenshots where
               strong assets exist.
             </p>
           </div>

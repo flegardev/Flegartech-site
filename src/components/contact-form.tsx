@@ -22,7 +22,7 @@ export function ContactForm({ email }: { email: string }) {
     const sender = String(data.get("email") ?? "").trim();
     const message = String(data.get("message") ?? "").trim();
     const subject = `Project inquiry from ${name}`;
-    const body = `${message}\n\n— ${name} (${sender})`;
+    const body = `${message}\n\n- ${name} (${sender})`;
     window.location.href = `mailto:${email}?subject=${encodeURIComponent(
       subject,
     )}&body=${encodeURIComponent(body)}`;
@@ -56,7 +56,7 @@ export function ContactForm({ email }: { email: string }) {
           placeholder="you@example.com"
         />
       </label>
-      {/* Honeypot field for bots — hidden from real users and screen readers */}
+      {/* Honeypot field for bots, hidden from real users and screen readers. */}
       <input
         type="text"
         name="company"
@@ -83,7 +83,7 @@ export function ContactForm({ email }: { email: string }) {
       >
         {pending ? (
           <>
-            Sending…
+            Sending...
             <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
           </>
         ) : (
