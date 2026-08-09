@@ -5,35 +5,40 @@ type BrandLogoProps = {
   size?: "header" | "hero" | "footer";
 };
 
-const sizes = {
-  header: {
-    width: 188,
-    height: 45,
-    className: "h-10 w-auto max-w-[13rem]",
-  },
-  hero: {
-    width: 360,
-    height: 86,
-    className: "h-auto w-full max-w-[23rem]",
-  },
-  footer: {
-    width: 210,
-    height: 50,
-    className: "h-11 w-auto max-w-[14rem]",
-  },
-};
-
 export function BrandLogo({ preload = false, size = "header" }: BrandLogoProps) {
-  const config = sizes[size];
+  if (size === "hero") {
+    return (
+      <Image
+        src="/brand/tini-flegar-banner-dark.png"
+        alt="Tini Flegar — Software · IT · Fullstack"
+        width={1200}
+        height={675}
+        preload={preload}
+        sizes="(max-width: 640px) 90vw, 32rem"
+        className="h-auto w-full rounded-sm object-contain"
+      />
+    );
+  }
 
   return (
-    <Image
-      src="/logo.png"
-      alt="FlegarTech logo"
-      width={config.width}
-      height={config.height}
-      preload={preload}
-      className={`${config.className} object-contain drop-shadow-[0_8px_24px_rgba(0,0,0,0.22)]`}
-    />
+    <span className="flex items-center gap-3">
+      <Image
+        src="/brand/tini-flegar-profile-dark.png"
+        alt=""
+        width={768}
+        height={768}
+        preload={preload}
+        sizes={size === "footer" ? "44px" : "40px"}
+        className={`${size === "footer" ? "h-11 w-11" : "h-10 w-10"} rounded-full border border-white/15 object-cover`}
+      />
+      <span className="min-w-0 leading-none">
+        <span className="font-brand block truncate text-xl font-semibold tracking-tight text-white">
+          Tini Flegar
+        </span>
+        <span className="mt-1 block truncate text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-zinc-400">
+          Full-Stack Developer
+        </span>
+      </span>
+    </span>
   );
 }

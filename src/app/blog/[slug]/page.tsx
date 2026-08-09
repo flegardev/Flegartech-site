@@ -46,7 +46,7 @@ function Block({ block }: { block: PostBlock }) {
       );
     case "ul":
       return (
-        <ul className="mt-5 list-disc space-y-2 pl-6 text-lg leading-8 text-zinc-300 marker:text-[#75b183]">
+        <ul className="mt-5 list-disc space-y-2 pl-6 text-lg leading-8 text-zinc-300 marker:text-[#eee8de]">
           {block.items.map((item) => (
             <li key={item}>{item}</li>
           ))}
@@ -70,7 +70,7 @@ export default async function BlogPostPage({ params }: Props) {
     datePublished: post.date,
     url: `${siteConfig.url}/blog/${post.slug}`,
     author: {
-      "@type": "Organization",
+      "@type": "Person",
       name: siteConfig.name,
       url: siteConfig.url,
     },
@@ -85,7 +85,7 @@ export default async function BlogPostPage({ params }: Props) {
         }}
       />
       <SiteHeader />
-      <main id="main" className="min-h-screen bg-[#050705] pt-28 text-white">
+      <main id="main" className="min-h-screen bg-[#050505] pt-28 text-white">
         <article className="mx-auto max-w-3xl px-4 pb-20 sm:px-6 lg:px-8">
           <Link
             href="/blog"
@@ -95,7 +95,7 @@ export default async function BlogPostPage({ params }: Props) {
             All posts
           </Link>
           <header className="mt-8">
-            <p className="text-sm text-zinc-500">
+            <p className="text-sm text-zinc-400">
               <time dateTime={post.date}>{dateFormat.format(new Date(post.date))}</time>
               {" · "}
               {post.readingMinutes} min read
@@ -109,13 +109,13 @@ export default async function BlogPostPage({ params }: Props) {
               <Block key={index} block={block} />
             ))}
           </div>
-          <div className="mt-12 rounded-lg border border-[#75b183]/25 bg-[#75b183]/[0.055] p-6">
+          <div className="mt-12 rounded-lg border border-white/15 bg-white/[0.04] p-6">
             <p className="text-lg font-semibold text-white">
               Building something where this applies?
             </p>
             <Link
               href="/#contact"
-              className="mt-4 inline-flex h-11 items-center gap-2 rounded-md bg-[#75b183] px-4 text-sm font-semibold text-[#061008] transition hover:bg-[#8ac897]"
+              className="mt-4 inline-flex h-11 items-center gap-2 rounded-md bg-[#eee8de] px-4 text-sm font-semibold text-[#090909] transition hover:bg-white"
             >
               Start a project
               <ArrowRight className="h-4 w-4" aria-hidden="true" />

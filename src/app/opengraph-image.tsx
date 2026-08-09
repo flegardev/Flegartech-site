@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "FlegarTech Digital Tools & Web Development";
+export const alt = "Tini Flegar — Full-Stack Developer · IT & Finance";
 export const size = {
   width: 1200,
   height: 630,
@@ -17,11 +17,10 @@ export default function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "80px",
-          backgroundColor: "#050705",
-          backgroundImage:
-            "radial-gradient(circle at 20% 0%, rgba(117, 177, 131, 0.25), transparent 50%), radial-gradient(circle at 85% 100%, rgba(95, 149, 216, 0.18), transparent 50%)",
-          color: "#f7fff9",
+          padding: "72px 80px",
+          backgroundColor: "#050505",
+          color: "#f7f5f2",
+          border: "2px solid #242424",
         }}
       >
         <div
@@ -30,13 +29,13 @@ export default function OpenGraphImage() {
             alignItems: "center",
             gap: "16px",
             fontSize: "28px",
-            color: "#75b183",
+            color: "#c9c4bc",
             fontWeight: 600,
             letterSpacing: "6px",
             textTransform: "uppercase",
           }}
         >
-          FlegarTech
+          Software · IT · Fullstack
         </div>
         <div
           style={{
@@ -47,7 +46,7 @@ export default function OpenGraphImage() {
             maxWidth: "950px",
           }}
         >
-          Digital tools, web apps & MVPs that actually work.
+          Tini Flegar
         </div>
         <div
           style={{
@@ -57,7 +56,7 @@ export default function OpenGraphImage() {
             maxWidth: "850px",
           }}
         >
-          Modern web platforms, dashboards and custom software for real-world use.
+          Full-Stack Developer · IT & Finance
         </div>
         <div
           style={{
@@ -66,16 +65,16 @@ export default function OpenGraphImage() {
             gap: "14px",
           }}
         >
-          {["Next.js", "TypeScript", "MVPs", "Dashboards"].map((tag) => (
+          {["Web Applications", "APIs", "Dashboards", "Automation"].map((tag) => (
             <div
               key={tag}
               style={{
                 display: "flex",
                 padding: "10px 22px",
                 borderRadius: "8px",
-                border: "1px solid rgba(117, 177, 131, 0.45)",
-                backgroundColor: "rgba(117, 177, 131, 0.12)",
-                color: "#bce4c4",
+                border: "1px solid #3a3a3a",
+                backgroundColor: "#111111",
+                color: "#dedbd5",
                 fontSize: "24px",
               }}
             >

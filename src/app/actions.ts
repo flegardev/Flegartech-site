@@ -40,23 +40,37 @@ export async function sendContactMessage(
     };
   }
 
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from: process.env.CONTACT_FROM_EMAIL ?? "FlegarTech Website <onboarding@resend.dev>",
-      to: [process.env.CONTACT_TO_EMAIL ?? siteConfig.email],
-      reply_to: email,
-      subject: `Project inquiry from ${name}`,
-      text: `${message}\n\n- ${name} (${email})`,
-    }),
-  });
+  let response: Response;
+
+  try {
+    response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: process.env.CONTACT_FROM_EMAIL ?? "Tini Flegar Portfolio <onboarding@resend.dev>",
+        to: [process.env.CONTACT_TO_EMAIL ?? siteConfig.email],
+        reply_to: email,
+        subject: `Portfolio inquiry from ${name}`,
+        text: `${message}\n\n- ${name} (${email})`,
+      }),
+      signal: AbortSignal.timeout(10_000),
+    });
+  } catch (error) {
+    console.error(
+      "Resend request failed:",
+      error instanceof Error ? error.name : "UnknownError",
+    );
+    return {
+      status: "error",
+      message: `The message service is temporarily unavailable. Please email ${siteConfig.email} directly.`,
+    };
+  }
 
   if (!response.ok) {
-    console.error("Resend API error:", response.status, await response.text());
+    console.error("Resend API error status:", response.status);
     return {
       status: "error",
       message: `Something went wrong sending your message. Please email ${siteConfig.email} directly.`,

@@ -39,8 +39,8 @@ export const projects: Project[] = [
     stack: ["Telematics", "React", "NestJS", "Prisma", "Leaflet"],
     status: "MVP",
     featured: true,
-    githubUrl: "https://github.com/flegartech-mvp/drivewise",
-    accent: "from-[#75b183] to-[#5f95d8]",
+    githubUrl: "https://github.com/flegardev/drivewise",
+    accent: "from-[#d7d2ca] to-[#5f95d8]",
     metric: "Telematics MVP",
     screenshots: [
       {
@@ -95,8 +95,8 @@ export const projects: Project[] = [
     stack: ["React", "TypeScript", "Vite", "Playwright"],
     status: "MVP",
     featured: true,
-    githubUrl: "https://github.com/flegartech-mvp/pametni-sistem-cakalnice",
-    accent: "from-[#75b183] to-[#a775d1]",
+    githubUrl: "https://github.com/flegardev/pametni-sistem-cakalnice",
+    accent: "from-[#d7d2ca] to-[#a775d1]",
     metric: "Queue system",
     screenshots: [
       {
@@ -151,8 +151,8 @@ export const projects: Project[] = [
     stack: ["Node.js", "JavaScript", "OpenAI API", "Playwright"],
     status: "In development",
     featured: true,
-    githubUrl: "https://github.com/flegartech-mvp/ai-automation-bot",
-    accent: "from-[#75b183] to-[#c8d85f]",
+    githubUrl: "https://github.com/flegardev/ai-automation-bot",
+    accent: "from-[#d7d2ca] to-[#c8d85f]",
     metric: "AI workflow",
     screenshots: [
       {
@@ -200,8 +200,8 @@ export const projects: Project[] = [
     stack: ["React", "TypeScript", "Vite", "Local storage"],
     status: "In development",
     featured: true,
-    githubUrl: "https://github.com/flegartech-mvp/studentski-denar",
-    accent: "from-[#75b183] to-[#d6b55e]",
+    githubUrl: "https://github.com/flegardev/studentski-denar",
+    accent: "from-[#d7d2ca] to-[#d6b55e]",
     metric: "Finance tool",
     screenshots: [
       {
@@ -256,8 +256,8 @@ export const projects: Project[] = [
     stack: ["React", "TypeScript", "Vite", "Tailwind CSS"],
     status: "In development",
     featured: true,
-    githubUrl: "https://github.com/flegartech-mvp/pulse-fitness-tracker",
-    accent: "from-[#75b183] to-[#d87c68]",
+    githubUrl: "https://github.com/flegardev/pulse-fitness-tracker",
+    accent: "from-[#d7d2ca] to-[#d87c68]",
     metric: "Health app",
     screenshots: [
       {
@@ -312,8 +312,8 @@ export const projects: Project[] = [
     stack: ["JavaScript", "Chrome Extension", "React", "Browser APIs"],
     status: "MVP",
     featured: true,
-    githubUrl: "https://github.com/flegartech-mvp/avtonet-garage",
-    accent: "from-[#75b183] to-[#9eb0bd]",
+    githubUrl: "https://github.com/flegardev/avtonet-garage",
+    accent: "from-[#d7d2ca] to-[#9eb0bd]",
     metric: "Vehicle tool",
     screenshots: [
       {
@@ -368,8 +368,8 @@ export const projects: Project[] = [
     stack: ["JavaScript", "Chrome Extension", "Local storage", "Playwright"],
     status: "In development",
     featured: true,
-    githubUrl: "https://github.com/flegartech-mvp/auto-life-logger",
-    accent: "from-[#75b183] to-[#82a8e8]",
+    githubUrl: "https://github.com/flegardev/auto-life-logger",
+    accent: "from-[#d7d2ca] to-[#82a8e8]",
     metric: "Focus tracker",
     screenshots: [
       {
@@ -424,8 +424,8 @@ export const projects: Project[] = [
     stack: ["JavaScript", "Chrome Extension", "Browser APIs", "Playwright"],
     status: "MVP",
     featured: true,
-    githubUrl: "https://github.com/flegartech-mvp/youtube-focus",
-    accent: "from-[#75b183] to-[#d85f5f]",
+    githubUrl: "https://github.com/flegardev/youtube-focus",
+    accent: "from-[#d7d2ca] to-[#d85f5f]",
     metric: "Focus extension",
     screenshots: [
       {
@@ -480,8 +480,8 @@ export const projects: Project[] = [
     stack: ["Next.js", "Express", "PostgreSQL", "Prisma"],
     status: "MVP",
     featured: false,
-    githubUrl: "https://github.com/flegartech-mvp/fullstack-template",
-    accent: "from-[#75b183] to-[#68d4c5]",
+    githubUrl: "https://github.com/flegardev/fullstack-template",
+    accent: "from-[#d7d2ca] to-[#68d4c5]",
     metric: "Build system",
     screenshots: [
       {
@@ -522,8 +522,8 @@ export const projects: Project[] = [
     stack: ["Python", "ccxt", "pandas", "scikit-learn"],
     status: "Case study",
     featured: false,
-    githubUrl: "https://github.com/flegartech-mvp/ai-bot",
-    accent: "from-[#75b183] to-[#6d8cff]",
+    githubUrl: "https://github.com/flegardev/ai-bot",
+    accent: "from-[#d7d2ca] to-[#6d8cff]",
     metric: "Trading research",
     screenshots: [],
     caseStudy: {

@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #050705;
-  --foreground: #f7fff9;
+  --background: #050505;
+  --foreground: #f7f5f2;
+  --surface: #0c0c0c;
+  --accent: #eee8de;
 }
 
 @theme inline {
@@ -10,6 +12,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-brand: var(--font-bodoni-moda);
+  --font-editorial: var(--font-cormorant-garamond);
 }
 
 * {
@@ -18,6 +22,7 @@
 
 html {
   background: var(--background);
+  color-scheme: dark;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -34,20 +39,49 @@ html {
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at 20% 0%, rgba(117, 177, 131, 0.16), transparent 28rem),
-    radial-gradient(circle at 80% 15%, rgba(95, 149, 216, 0.1), transparent 24rem),
+    radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.07), transparent 30rem),
+    radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.035), transparent 24rem),
     var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+a,
+button,
+summary {
+  touch-action: manipulation;
+}
+
+h1,
+h2,
+.font-brand {
+  font-family: var(--font-bodoni-moda), Didot, "Times New Roman", serif;
+  font-optical-sizing: auto;
+  text-wrap: balance;
+}
+
+.font-editorial {
+  font-family: var(--font-cormorant-garamond), Georgia, serif;
+}
+
 ::selection {
-  background: rgba(117, 177, 131, 0.35);
-  color: #ffffff;
+  background: rgba(238, 232, 222, 0.28);
+  color: #fff;
 }
 
 :focus-visible {
-  outline: 2px solid #75b183;
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 

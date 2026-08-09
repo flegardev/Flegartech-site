@@ -21,9 +21,9 @@ export function Process() {
           {steps.map(([title, description], index) => (
             <li
               key={title}
-              className="rounded-lg border border-white/10 bg-white/[0.035] p-5 transition hover:border-[#75b183]/35"
+              className="rounded-lg border border-white/10 bg-white/[0.035] p-5 transition hover:border-[#eee8de]/35"
             >
-              <div className="mb-5 grid h-10 w-10 place-items-center rounded-md bg-[#75b183] text-sm font-bold text-[#061008]">
+              <div className="mb-5 grid h-10 w-10 place-items-center rounded-md bg-[#eee8de] text-sm font-bold text-[#090909]">
                 {index + 1}
               </div>
               <h3 className="text-base font-semibold text-white">{title}</h3>
