@@ -1,32 +1,60 @@
-# Deployment - FlegarTech Website
+# Deployment — Tini Flegar Portfolio
 
-Next.js 16 (App Router) static/SSG marketing site. Primary target: **Vercel**.
+This is a Next.js 16 App Router portfolio with static/SSG routes and one optional Server Action for contact email. The primary hosting target is Vercel.
 
-## Build / run
-| Command | Purpose |
-|---------|---------|
-| `npm ci` | Clean install from lockfile |
-| `npm run lint` | ESLint |
-| `npm run build` | Production build (also runs TypeScript) |
-| `npm start` | Serve the production build locally |
+## Runtime and build
 
-Output: `.next/` (handled automatically by Vercel - no custom output dir).
-Node: 22+ (CI uses 22; local verified on 24).
+- Node.js: 22 or newer
+- Install: `npm ci`
+- Build: `npm run build`
+- Output: `.next/` (managed by the Next.js runtime)
 
-## Vercel (recommended)
-Next.js is auto-detected - **no `vercel.json` required**.
+The currently verified public domain is `https://flegartech-site-main.vercel.app`. A replacement domain must also be supplied through `NEXT_PUBLIC_SITE_URL` so canonical metadata, JSON-LD, robots and sitemap output stay consistent.
 
-1. Import the repo in Vercel (or `vercel` CLI). Framework preset: **Next.js**.
-2. Build command `next build`, output auto. Install `npm ci`.
-3. Set environment variables (all **server-only**, none `NEXT_PUBLIC_`):
-   - `RESEND_API_KEY` - optional; without it the contact form falls back to the visitor's mail client.
-   - `CONTACT_FROM_EMAIL` - optional; verified Resend sender. Defaults to `FlegarTech Website <onboarding@resend.dev>`.
-   - `CONTACT_TO_EMAIL` - optional; recipient. Defaults to `siteConfig.email`.
-4. Deploy. Verify `/`, `/projects`, `/projects/[slug]`, `/blog`, `/blog/[slug]`, `/sitemap.xml`, `/robots.txt`, `/manifest.webmanifest`, `/opengraph-image`.
+## Vercel setup
 
-## Alternative hosts
-Any Node host can run `npm run build` + `npm start` (default port 3000, override with `PORT`). Netlify works via the official Next runtime.
+1. Import `flegardev/flegartech-site` and keep the standard Next.js framework settings.
+2. Set `NEXT_PUBLIC_SITE_URL` to the final production origin without a trailing slash.
+3. To enable direct contact delivery, set server-only `RESEND_API_KEY` and a verified `CONTACT_FROM_EMAIL`.
+4. Optionally set `CONTACT_TO_EMAIL`; it defaults to `flegardev@gmail.com`.
+5. Deploy, then verify the routes and response headers below.
 
-## Notes / known limitations
-- `npm audit` reports 2 *moderate* advisories in **PostCSS bundled inside Next.js**. The only offered "fix" force-downgrades Next 16 → 9 (a major breaking regression) and is rejected. The advisory (XSS via unescaped `</style>` when stringifying **untrusted** CSS) does not apply to this site, which processes only first-party CSS. Track an upstream Next patch instead.
-- Contact form uses a React Server Action (`src/app/actions.ts`) with honeypot, field validation, length caps, and graceful error/unconfigured states.
+No `vercel.json` is required.
+
+## Required release checks
+
+```bash
+npm ci
+npm audit --audit-level=high
+npm run lint
+npm run typecheck
+npm run build
+npm start
+```
+
+Smoke-test:
+
+- `/`
+- `/projects` and at least one `/projects/[slug]`
+- `/blog` and at least one `/blog/[slug]`
+- `/sitemap.xml`
+- `/robots.txt`
+- `/manifest.webmanifest`
+- `/opengraph-image`
+- Contact form with no Resend key (expected pre-filled email fallback)
+- Contact form with a Resend test/verified sender when credentials are available
+
+Confirm the deployed responses include `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy` and `Content-Security-Policy-Report-Only`.
+
+## Security and operational notes
+
+- The Server Action body limit is 16 KB, while visible fields are capped well below that boundary.
+- Resend calls time out after 10 seconds and provider response bodies are not logged.
+- The honeypot reduces basic bot submissions but is not durable rate limiting.
+- Configure a Vercel Firewall rate rule or another shared edge/data service before treating the public email endpoint as abuse-resistant. Do not use an in-memory counter in a multi-instance serverless deployment.
+- The CSP is report-only. Review violations before promoting it to a blocking policy.
+- All credentials remain server-only; never prefix the Resend key with `NEXT_PUBLIC_`.
+
+## Alternative Node hosts
+
+Any compatible Node host can run `npm run build` followed by `npm start`. Recreate the environment variables, TLS, abuse controls and response-header verification on that platform.

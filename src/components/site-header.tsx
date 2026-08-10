@@ -60,13 +60,19 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const headerRef = useRef<HTMLElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const firstMobileLinkRef = useRef<HTMLAnchorElement>(null);
   const activeSection = useActiveSection(pathname === "/");
 
   // Close the mobile menu on Escape and on clicks outside the header.
   useEffect(() => {
     if (!open) return;
+    const focusFrame = window.requestAnimationFrame(() => firstMobileLinkRef.current?.focus());
     function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape") {
+        setOpen(false);
+        menuButtonRef.current?.focus();
+      }
     }
     function onPointerDown(event: PointerEvent) {
       if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
@@ -76,18 +82,9 @@ export function SiteHeader() {
     document.addEventListener("keydown", onKeyDown);
     document.addEventListener("pointerdown", onPointerDown);
     return () => {
+      window.cancelAnimationFrame(focusFrame);
       document.removeEventListener("keydown", onKeyDown);
       document.removeEventListener("pointerdown", onPointerDown);
-    };
-  }, [open]);
-
-  // Lock body scroll while the mobile menu is open.
-  useEffect(() => {
-    if (!open) return;
-    const previous = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = previous;
     };
   }, [open]);
 
@@ -100,7 +97,7 @@ export function SiteHeader() {
   return (
     <header
       ref={headerRef}
-      className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#050705]/86 backdrop-blur-xl"
+      className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#050505]/90 pt-[env(safe-area-inset-top)] backdrop-blur-xl"
     >
       <nav
         aria-label="Main"
@@ -109,7 +106,7 @@ export function SiteHeader() {
         <Link
           href="/#home"
           className="flex items-center"
-          aria-label="FlegarTech home"
+          aria-label="Tini Flegar home"
           onClick={() => setOpen(false)}
         >
           <BrandLogo preload />
@@ -121,7 +118,7 @@ export function SiteHeader() {
               href={item.href}
               aria-current={isActive(item) ? "true" : undefined}
               className={`transition hover:text-white ${
-                isActive(item) ? "font-semibold text-[#9dd8a8]" : ""
+                isActive(item) ? "font-semibold text-[#f4f1ec]" : ""
               }`}
             >
               {item.label}
@@ -131,18 +128,19 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           <Link
             href="/#contact"
-            className="hidden h-10 items-center gap-2 rounded-md bg-[#75b183] px-4 text-sm font-semibold text-[#061008] shadow-[0_16px_40px_rgba(117,177,131,0.16)] transition hover:bg-[#8ac897] active:translate-y-px sm:inline-flex"
+            className="hidden h-10 items-center gap-2 rounded-md bg-[#eee8de] px-4 text-sm font-semibold text-[#090909] shadow-[0_16px_40px_rgba(238,232,222,0.12)] transition hover:bg-white active:translate-y-px sm:inline-flex"
           >
             Start a Project
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
           <button
+            ref={menuButtonRef}
             type="button"
             onClick={() => setOpen((value) => !value)}
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="grid h-10 w-10 place-items-center rounded-md border border-white/15 text-zinc-200 transition hover:border-[#75b183]/60 hover:text-white md:hidden"
+            className="grid h-10 w-10 place-items-center rounded-md border border-white/15 text-zinc-200 transition hover:border-[#eee8de]/60 hover:text-white md:hidden"
           >
             {open ? (
               <X className="h-5 w-5" aria-hidden="true" />
@@ -155,17 +153,18 @@ export function SiteHeader() {
       {open ? (
         <div
           id="mobile-nav"
-          className="border-t border-white/10 bg-[#050705]/95 px-4 pb-6 pt-3 backdrop-blur-xl md:hidden"
+          className="max-h-[calc(100dvh-4.5rem)] overflow-y-auto overscroll-contain border-t border-white/10 bg-[#050505]/98 px-4 pb-[calc(1.5rem+env(safe-area-inset-bottom))] pt-3 backdrop-blur-xl md:hidden"
         >
           <div className="grid gap-1 text-base text-zinc-200">
-            {navItems.map((item) => (
+            {navItems.map((item, index) => (
               <Link
+                ref={index === 0 ? firstMobileLinkRef : undefined}
                 key={item.label}
                 href={item.href}
                 onClick={() => setOpen(false)}
                 aria-current={isActive(item) ? "true" : undefined}
-                className={`rounded-md px-3 py-3 transition hover:bg-[#75b183]/10 hover:text-white ${
-                  isActive(item) ? "font-semibold text-[#9dd8a8]" : ""
+                className={`rounded-md px-3 py-3 transition hover:bg-white/[0.08] hover:text-white ${
+                  isActive(item) ? "font-semibold text-[#f4f1ec]" : ""
                 }`}
               >
                 {item.label}
@@ -175,7 +174,7 @@ export function SiteHeader() {
           <Link
             href="/#contact"
             onClick={() => setOpen(false)}
-            className="mt-3 inline-flex h-11 w-full items-center justify-center gap-2 rounded-md bg-[#75b183] px-4 text-sm font-semibold text-[#061008] transition hover:bg-[#8ac897]"
+            className="mt-3 inline-flex h-11 w-full items-center justify-center gap-2 rounded-md bg-[#eee8de] px-4 text-sm font-semibold text-[#090909] transition hover:bg-white"
           >
             Start a Project
             <ArrowRight className="h-4 w-4" aria-hidden="true" />

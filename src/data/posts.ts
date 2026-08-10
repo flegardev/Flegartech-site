@@ -15,43 +15,43 @@ export type Post = {
 export const posts: Post[] = [
   {
     slug: "how-i-scope-an-mvp",
-    title: "How I scope an MVP in one week",
+    title: "How I scope a focused MVP",
     description:
-      "The process I use to turn a fuzzy product idea into a buildable, fixed-scope first release before writing any code.",
+      "A practical framework for turning a broad product idea into a buildable first release before writing code.",
     date: "2026-06-01",
     readingMinutes: 4,
     blocks: [
       {
         type: "p",
-        text: "Most MVPs fail before the first line of code, in the scoping. Either the scope is everything the founder ever imagined, or it's so thin that the launch proves nothing. The week I spend scoping is the highest-leverage week of the whole project.",
+        text: "An MVP becomes hard to evaluate when its scope includes every possible feature or strips away the core value. The useful middle is a first release with one complete workflow and explicit boundaries.",
       },
-      { type: "h2", text: "Day 1-2: Find the one workflow" },
+      { type: "h2", text: "Step 1: Find the one workflow" },
       {
         type: "p",
         text: "Every product worth building has one workflow that carries the value. For a queue system it's 'visitor joins, sees their position, gets called'. For a budgeting app it's 'log an expense, see what's safe to spend'. I keep asking one question until the answer is concrete: what does the user do on day one, and what do they get out of it?",
       },
-      { type: "h2", text: "Day 3: Decide what the MVP will not do" },
+      { type: "h2", text: "Step 2: Decide what the MVP will not do" },
       {
         type: "p",
-        text: "The not-list is more important than the feature list. No accounts in v1 if a magic link will do. No admin panel if a database client will do for the first ten customers. Every cut here is a week of delivery time bought back.",
+        text: "The not-list is as important as the feature list. Avoid custom authentication when a proven provider is enough, and skip an admin panel when a documented operational workflow can support the first release. Each cut protects time for the core experience.",
       },
-      { type: "h2", text: "Day 4-5: Write the scope as screens" },
+      { type: "h2", text: "Step 3: Write the scope as screens" },
       {
         type: "p",
         text: "A scope written as features ('user management') is ambiguous. A scope written as screens is not: this screen shows this data, these three buttons do these three things. Screens are also the natural unit for estimating and for agreeing on what 'done' means.",
       },
-      { type: "h2", text: "What the client gets" },
+      { type: "h2", text: "What the scope should contain" },
       {
         type: "ul",
         items: [
           "A one-page scope: the workflow, the screens, the not-list",
-          "A fixed price and a delivery date tied to that scope",
+          "Acceptance criteria and verification steps for each core screen",
           "A clear path for v2, where everything on the not-list is a candidate",
         ],
       },
       {
         type: "p",
-        text: "The point isn't ceremony. It's that a week of honest scoping makes the build phase boring, and boring builds ship on time.",
+        text: "The point is not ceremony. A concrete scope makes implementation easier to review, test and change without losing the product's central workflow.",
       },
     ],
   },
@@ -84,7 +84,7 @@ export const posts: Post[] = [
       { type: "h2", text: "Where I deviate" },
       {
         type: "p",
-        text: "Browser extensions, bots and automation tools don't need a framework at all. Plain TypeScript with a small build step beats dragging a web framework into a non-web product. And when a client already runs on another stack, joining it usually beats migrating it.",
+        text: "Browser extensions, bots and automation tools don't need a web framework by default. Plain TypeScript with a small build step can be the clearer choice. When an existing product already uses another stack, integrating with it often carries less risk than migrating it.",
       },
       { type: "h2", text: "What I avoid in v1" },
       {
@@ -112,12 +112,12 @@ export const posts: Post[] = [
     blocks: [
       {
         type: "p",
-        text: "Every dashboard project starts with the same request: 'we want to see everything in one place.' Most end the same way: a page of charts nobody opens after week two. The difference between a used dashboard and an abandoned one is rarely visual. It's editorial.",
+        text: "Dashboard requests often begin with 'we want to see everything in one place.' That framing can produce a dense page of charts without a clear decision behind them. The design challenge is editorial before it is visual.",
       },
       { type: "h2", text: "Answer a question, don't display data" },
       {
         type: "p",
-        text: "A used dashboard answers a question its owner asks every day: are we on track today, which driver is risky this week, what's due next. If the question isn't crisp, no amount of charting fixes it. I start every dashboard by writing the three questions it must answer, in the owner's words.",
+        text: "A useful dashboard answers a concrete question: are we on track today, which driver is risky this week, or what is due next. If the question is unclear, more charting does not fix it. Start by writing the small set of questions the interface must answer.",
       },
       { type: "h2", text: "One number per question" },
       {

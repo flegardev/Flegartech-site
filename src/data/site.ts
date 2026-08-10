@@ -1,10 +1,14 @@
+const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+
 export const siteConfig = {
-  name: "FlegarTech",
-  url: "https://flegartech.vercel.app",
-  email: "flegartech@gmail.com",
-  githubUrl: "https://github.com/flegartech-mvp",
-  githubHandle: "github.com/flegartech-mvp",
-  title: "FlegarTech | Digital Tools & Web Development",
+  name: "Tini Flegar",
+  professionalTitle: "Full-Stack Developer · IT & Finance",
+  brandLine: "Software · IT · Fullstack",
+  url: (configuredSiteUrl || "https://flegartech-site-main.vercel.app").replace(/\/$/, ""),
+  email: "flegardev@gmail.com",
+  githubUrl: "https://github.com/flegardev",
+  githubHandle: "github.com/flegardev",
+  title: "Tini Flegar | Full-Stack Developer · IT & Finance",
   description:
-    "FlegarTech builds modern web platforms, dashboards, MVPs and custom software for real-world use.",
+    "Portfolio of Tini Flegar, a full-stack developer building practical software, web applications, dashboards and finance-focused tools.",
 };

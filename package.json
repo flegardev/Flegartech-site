@@ -2,16 +2,27 @@
   "name": "flegartech-site",
   "version": "0.1.0",
   "private": true,
+  "description": "Personal portfolio for Tini Flegar, Full-Stack Developer · IT & Finance.",
+  "homepage": "https://flegartech-site-main.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flegardev/flegartech-site.git"
+  },
+  "author": {
+    "name": "Tini Flegar",
+    "email": "flegardev@gmail.com"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
     "lucide-react": "^1.17.0",
-    "next": "16.2.9",
+    "next": "16.2.12",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
@@ -21,12 +32,13 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.9",
-    "sharp": "^0.35.0",
+    "eslint-config-next": "16.2.12",
+    "sharp": "^0.35.3",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
   "overrides": {
-    "postcss": "^8.5.10"
+    "postcss": "^8.5.25",
+    "sharp": "$sharp"
   }
 }

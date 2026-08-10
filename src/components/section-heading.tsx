@@ -9,7 +9,7 @@ export function SectionHeading({
 }) {
   return (
     <div className="reveal mb-12 max-w-3xl">
-      <p className="mb-3 text-sm font-semibold text-[#8ac897]">
+      <p className="font-editorial mb-3 text-xl font-semibold text-zinc-300">
         {eyebrow}
       </p>
       <h2 className="text-3xl font-semibold tracking-normal text-white sm:text-4xl">{title}</h2>

@@ -62,11 +62,11 @@ export function Services() {
             return (
               <article
                 key={service.title}
-                className={`group reveal rounded-lg border border-white/10 bg-white/[0.035] p-6 transition duration-300 hover:-translate-y-1 hover:border-[#75b183]/45 hover:bg-[#75b183]/[0.055] ${
+                className={`group reveal rounded-lg border border-white/10 bg-white/[0.035] p-6 transition duration-300 hover:-translate-y-1 hover:border-[#eee8de]/45 hover:bg-white/[0.055] ${
                   index < 2 ? "lg:col-span-3" : "lg:col-span-2"
                 }`}
               >
-                <div className="mb-5 grid h-12 w-12 place-items-center rounded-md bg-[#75b183]/12 text-[#75b183] ring-1 ring-[#75b183]/25">
+                <div className="mb-5 grid h-12 w-12 place-items-center rounded-md bg-white/[0.08] text-[#eee8de] ring-1 ring-white/20">
                   <Icon className="h-6 w-6" aria-hidden="true" />
                 </div>
                 <h3 className="text-xl font-semibold text-white">{service.title}</h3>

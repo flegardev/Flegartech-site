@@ -12,12 +12,13 @@ import { siteConfig } from "@/data/site";
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": "Person",
   name: siteConfig.name,
   url: siteConfig.url,
   email: siteConfig.email,
+  jobTitle: siteConfig.professionalTitle,
   description: siteConfig.description,
-  logo: `${siteConfig.url}/logo.png`,
+  image: `${siteConfig.url}/brand/tini-flegar-profile-dark.png`,
   sameAs: [siteConfig.githubUrl],
   knowsAbout: [
     "Web development",
@@ -38,7 +39,7 @@ export default function Home() {
         }}
       />
       <SiteHeader />
-      <main id="main" className="min-h-screen overflow-hidden bg-[#050705] text-white">
+      <main id="main" className="min-h-screen overflow-x-clip bg-[#050505] text-white">
         <Hero />
         <Services />
         <Projects />

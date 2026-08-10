@@ -1,52 +1,52 @@
-import { CalendarCheck, FileText, MessageSquare } from "lucide-react";
+import { CheckCircle2, ChevronDown, FileText, Workflow } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
 
 const steps = [
   {
-    title: "Intro call or email",
+    title: "Start with the workflow",
     description:
-      "Describe the idea in whatever shape it's in. A paragraph is enough. You get an honest read on whether it's worth building and what the smallest useful version looks like.",
-    icon: MessageSquare,
+      "Define the user, the core task and the smallest outcome that makes the software useful before expanding the feature list.",
+    icon: Workflow,
   },
   {
-    title: "Fixed scope, fixed price",
+    title: "Document the boundaries",
     description:
-      "The scope is written as concrete screens and workflows, with a clear not-list for v1. You know the price and the delivery date before any code is written.",
+      "Write down the routes, data, environment requirements and explicit non-goals so implementation stays reviewable.",
     icon: FileText,
   },
   {
-    title: "Weekly visible progress",
+    title: "Verify before claiming done",
     description:
-      "Every project ships to a preview URL from week one, so you watch the product take shape instead of waiting for a big reveal.",
-    icon: CalendarCheck,
+      "Run the strongest available lint, type, test, build and browser checks, then state remaining limitations plainly.",
+    icon: CheckCircle2,
   },
 ];
 
 const faqs = [
   {
-    question: "How long does an MVP take?",
+    question: "What do the project status labels mean?",
     answer:
-      "Most MVPs on this site took 3-6 weeks from agreed scope to a deployed product. The scoping week before that is what makes the estimate reliable.",
+      "MVP identifies a usable first version, In development marks active incomplete work, and Case study means the repository is presented for its technical approach rather than as a live product.",
   },
   {
-    question: "What does a typical project cost?",
+    question: "Can I inspect the source code?",
     answer:
-      "It depends on scope, which is exactly why scope comes first: after the scoping phase you get a fixed price tied to a written scope, not an hourly meter.",
+      "Yes. Each project card links to its public GitHub repository. The case study explains the purpose, current state and selected implementation details.",
   },
   {
-    question: "Who owns the code?",
+    question: "How are portfolio claims verified?",
     answer:
-      "You do. Every project is delivered in a repository you own, with deployment set up so you're never locked in to FlegarTech.",
+      "Build, test and browser results are recorded in repository documentation. Missing credentials or external-service checks are reported as limitations rather than implied successes.",
   },
   {
-    question: "What happens after launch?",
+    question: "What areas does the portfolio cover?",
     answer:
-      "Your call: hand over with documentation, or continue with an iteration arrangement where real user feedback drives the next releases.",
+      "Full-stack web applications, APIs, dashboards, browser extensions, automation tools and finance-oriented product experiments.",
   },
   {
-    question: "Delate v Sloveniji?",
+    question: "How can I get in touch?",
     answer:
-      "Ja. FlegarTech deluje tudi v slovenščini. Pišite v slovenščini ali angleščini, kakor vam je lažje.",
+      "Use the contact form or email flegardev@gmail.com. If direct delivery is not configured, the form opens a pre-filled email draft instead.",
   },
 ];
 
@@ -56,8 +56,8 @@ export function Engagement() {
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Working Together"
-          title="No surprises, from first email to launch."
-          description="A simple engagement model designed so you always know what you're getting, what it costs and where it stands."
+          title="A practical, evidence-led way to build."
+          description="Scope the useful workflow, keep implementation reviewable and verify the result before making claims."
         />
         <div className="grid gap-4 md:grid-cols-3">
           {steps.map((step) => {
@@ -67,7 +67,7 @@ export function Engagement() {
                 key={step.title}
                 className="reveal rounded-lg border border-white/10 bg-white/[0.035] p-6"
               >
-                <div className="mb-5 grid h-12 w-12 place-items-center rounded-md bg-[#75b183]/12 text-[#75b183] ring-1 ring-[#75b183]/25">
+                <div className="mb-5 grid h-12 w-12 place-items-center rounded-md bg-white/[0.08] text-[#eee8de] ring-1 ring-white/20">
                   <Icon className="h-6 w-6" aria-hidden="true" />
                 </div>
                 <h3 className="text-xl font-semibold text-white">{step.title}</h3>
@@ -84,10 +84,14 @@ export function Engagement() {
             {faqs.map((faq) => (
               <details
                 key={faq.question}
-                className="group rounded-lg border border-white/10 bg-white/[0.035] open:border-[#75b183]/40"
+                className="group rounded-lg border border-white/10 bg-white/[0.035] open:border-[#eee8de]/40"
               >
-                <summary className="cursor-pointer list-none px-5 py-4 text-base font-semibold text-white transition hover:text-[#bce4c4] [&::-webkit-details-marker]:hidden">
-                  {faq.question}
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-base font-semibold text-white transition hover:text-zinc-200 [&::-webkit-details-marker]:hidden">
+                  <span>{faq.question}</span>
+                  <ChevronDown
+                    className="h-4 w-4 shrink-0 text-zinc-400 transition-transform group-open:rotate-180"
+                    aria-hidden="true"
+                  />
                 </summary>
                 <p className="px-5 pb-5 text-sm leading-6 text-zinc-400">{faq.answer}</p>
               </details>

@@ -16,7 +16,7 @@ const techStack = [
 
 export function TechStack() {
   return (
-    <section className="border-y border-white/10 bg-[#080b09] px-4 py-20 sm:px-6 lg:px-8">
+    <section className="border-y border-white/10 bg-[#0a0a0a] px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Tech Stack"
@@ -27,7 +27,7 @@ export function TechStack() {
           {techStack.map((tech) => (
             <div
               key={tech}
-              className="grid min-h-20 place-items-center rounded-md border border-white/10 bg-[#050705]/70 px-3 text-center text-sm font-semibold text-zinc-200 transition hover:border-[#75b183]/45 hover:bg-[#75b183]/[0.055] hover:text-white"
+              className="grid min-h-20 place-items-center rounded-md border border-white/10 bg-[#050505]/70 px-3 text-center text-sm font-semibold text-zinc-200 transition hover:border-[#eee8de]/45 hover:bg-white/[0.055] hover:text-white"
             >
               {tech}
             </div>
