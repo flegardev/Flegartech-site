@@ -541,6 +541,148 @@ export const projects: Project[] = [
       ],
     },
   },
+  {
+    name: "Borza Academy",
+    slug: "borza",
+    description:
+      "Multilingual financial-literacy academy with structured learning paths, trading simulation, review flows, and classroom tools.",
+    stack: ["Next.js", "React", "TypeScript", "FastAPI", "SQLAlchemy", "PostgreSQL", "Supabase"],
+    status: "MVP",
+    featured: true,
+    githubUrl: "https://github.com/flegardev/Borza",
+    demoUrl: "https://borza-kappa.vercel.app",
+    accent: "from-[#d7d2ca] to-[#3b82f6]",
+    metric: "Fintech Academy",
+    screenshots: [
+      {
+        src: "/projects/borza/dashboard-desktop.png",
+        width: 1440,
+        height: 900,
+        alt: "Borza Academy main platform interface showing curriculum paths and learning dashboard",
+        caption: "Academy dashboard",
+      },
+      {
+        src: "/projects/borza/mobile-dashboard.png",
+        width: 390,
+        height: 844,
+        alt: "Borza Academy mobile view for responsive learning",
+        caption: "Mobile interface",
+      },
+    ],
+    caseStudy: {
+      problem:
+        "Financial education and trading practice often rely on unverified advice or complex trading software. Beginners need structured, risk-focused micro-learning paired with realistic, non-monetary practice.",
+      approach:
+        "A full-stack learning platform joining a Next.js 16 App Router frontend, a FastAPI/SQLAlchemy backend, PostgreSQL database, and optional Supabase auth. Features German, Slovenian, and English curriculum paths, quizzes, calculator tools, trading simulations, and teacher classroom controls.",
+      outcome:
+        "A production-relevant MVP supporting 12 curriculum paths, interactive chart exercises, and deterministic historical replay scenarios where process quality and risk management are scored independently from profit.",
+      highlights: [
+        "Multilingual learning paths in DE, SL, and EN",
+        "Deterministic paper-trading simulator with historical replay",
+        "Socratic AI mentor integration with fallback safeguards",
+        "Teacher Mode for secondary school classroom sessions and CSV reporting",
+      ],
+    },
+  },
+  {
+    name: "Nana's Recipes",
+    slug: "recepti",
+    description:
+      "Private shared household cookbook PWA with multi-owner authorization, pantry-based recipe matching, and offline support.",
+    stack: ["Next.js", "React", "TypeScript", "Supabase Auth", "PostgreSQL", "Tailwind CSS"],
+    status: "Live",
+    featured: true,
+    githubUrl: "https://github.com/flegardev/recepti",
+    demoUrl: "https://recepti-rho.vercel.app",
+    accent: "from-[#d7d2ca] to-[#e11d48]",
+    metric: "Household PWA",
+    screenshots: [
+      {
+        src: "/projects/recepti/preview-desktop.png",
+        width: 1440,
+        height: 900,
+        alt: "Nana's Recipes private household cookbook dashboard and recipe library",
+        caption: "Cookbook dashboard",
+      },
+      {
+        src: "/projects/recepti/mobile-preview.png",
+        width: 390,
+        height: 844,
+        alt: "Nana's Recipes mobile cooking view and pantry manager",
+        caption: "Mobile cooking mode",
+      },
+    ],
+    caseStudy: {
+      problem:
+        "Households struggle to organize shared recipes, keep track of pantry ingredients, and answer the daily question of what to cook without wasting food.",
+      approach:
+        "A private Next.js 16 PWA built with React 19, TypeScript, and Supabase Auth/PostgreSQL. Implements multi-owner security boundaries, pantry matching algorithms, serving scaling, mobile step-by-step cooking timers, and structured grocery lists.",
+      outcome:
+        "A deployed, installable household application featuring a warm kitchen design system, strict authorization controls, transactional PostgreSQL RPCs, offline fallback, and zero-leakage security RLS policies.",
+      highlights: [
+        "Pantry-based recipe matching and grocery list generation",
+        "Multi-owner Google OAuth authorization with private storage",
+        "Mobile cooking mode with step-by-step timers and wake lock",
+        "Installable PWA with offline fallback caching",
+      ],
+    },
+  },
+  {
+    name: "DeloHub SI",
+    slug: "delohub-si",
+    description:
+      "Slovenian jobs marketplace platform with typed search, student & career tracks, applicant workflows, and employer analytics.",
+    stack: ["Symfony", "PHP", "Vue", "TypeScript", "PostgreSQL", "Redis", "Elasticsearch", "Docker"],
+    status: "MVP",
+    featured: true,
+    githubUrl: "https://github.com/flegardev/DeloHubSI",
+    accent: "from-[#d7d2ca] to-[#059669]",
+    metric: "Jobs Marketplace",
+    screenshots: [
+      {
+        src: "/projects/delohub-si/home-desktop.png",
+        width: 1440,
+        height: 900,
+        alt: "DeloHub SI jobs marketplace landing page with student and career work discovery",
+        caption: "Marketplace homepage",
+      },
+      {
+        src: "/projects/delohub-si/job-detail.png",
+        width: 1440,
+        height: 900,
+        alt: "DeloHub SI job details page with employer requirements and application flow",
+        caption: "Job detail view",
+      },
+      {
+        src: "/projects/delohub-si/candidate-dashboard.png",
+        width: 1440,
+        height: 900,
+        alt: "DeloHub SI candidate dashboard with resume manager and application tracking",
+        caption: "Candidate dashboard",
+      },
+      {
+        src: "/projects/delohub-si/home-mobile.png",
+        width: 390,
+        height: 844,
+        alt: "DeloHub SI mobile jobs discovery layout",
+        caption: "Mobile view",
+      },
+    ],
+    caseStudy: {
+      problem:
+        "Employment portals in Slovenia often conflate temporary student work with permanent career positions, lacking clear role separation, modern UI workflows, and malware-scanned resume storage.",
+      approach:
+        "A full-stack employment application built on Symfony/PHP and Vue 3/TypeScript, supported by PostgreSQL, Redis, RabbitMQ outbox publishing, Elasticsearch search projection, MinIO private S3 storage, and ClamAV malware scanning.",
+      outcome:
+        "A comprehensive portfolio-grade platform covering typed job discovery for both student work and career roles, employer listing moderation, applicant pipelines, messaging, alerts, and operational admin tools.",
+      highlights: [
+        "Dual-track architecture for Slovenian student work and regular career employment",
+        "Transactional RabbitMQ outbox and Elasticsearch search projection with SQL fallback",
+        "ClamAV fail-closed malware scanning for private S3 resume uploads",
+        "Reviewed OpenAPI 3.1 contract covering 91 API operations across candidate, employer, and admin roles",
+      ],
+    },
+  },
 ];
 
 export const featuredProjects = projects.filter((project) => project.featured);
