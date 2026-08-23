@@ -33,7 +33,7 @@ Official portfolio website for Tini Flegar (FlegarTech), built with Next.js 15, 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/flegardev/flegartech-site.git
+   git clone https://github.com/flegardev/Flegartech-site.git
    cd flegartech-site
    ```
 

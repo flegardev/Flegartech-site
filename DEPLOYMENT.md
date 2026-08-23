@@ -13,7 +13,7 @@ The currently verified public domain is `https://flegartech-site-main.vercel.app
 
 ## Vercel setup
 
-1. Import `flegardev/flegartech-site` and keep the standard Next.js framework settings.
+1. Import `flegardev/Flegartech-site` and keep the standard Next.js framework settings.
 2. Set `NEXT_PUBLIC_SITE_URL` to the final production origin without a trailing slash.
 3. To enable direct contact delivery, set server-only `RESEND_API_KEY` and a verified `CONTACT_FROM_EMAIL`.
 4. Optionally set `CONTACT_TO_EMAIL`; it defaults to `flegardev@gmail.com`.

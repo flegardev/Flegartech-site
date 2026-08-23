@@ -39,7 +39,7 @@ export const projects: Project[] = [
     stack: ["Telematics", "React", "NestJS", "Prisma", "Leaflet"],
     status: "MVP",
     featured: true,
-    githubUrl: "https://github.com/flegardev/drivewise",
+    githubUrl: "https://github.com/flegardev/Drivewise",
     accent: "from-[#d7d2ca] to-[#5f95d8]",
     metric: "Telematics MVP",
     screenshots: [
@@ -95,7 +95,7 @@ export const projects: Project[] = [
     stack: ["React", "TypeScript", "Vite", "Playwright"],
     status: "MVP",
     featured: true,
-    githubUrl: "https://github.com/flegardev/pametni-sistem-cakalnice",
+    githubUrl: "https://github.com/flegardev/Pametni-sistem-cakalnice",
     accent: "from-[#d7d2ca] to-[#a775d1]",
     metric: "Queue system",
     screenshots: [
@@ -151,7 +151,7 @@ export const projects: Project[] = [
     stack: ["Node.js", "JavaScript", "OpenAI API", "Playwright"],
     status: "In development",
     featured: true,
-    githubUrl: "https://github.com/flegardev/ai-automation-bot",
+    githubUrl: "https://github.com/flegardev/AI-automation-bot",
     accent: "from-[#d7d2ca] to-[#c8d85f]",
     metric: "AI workflow",
     screenshots: [
@@ -200,7 +200,7 @@ export const projects: Project[] = [
     stack: ["React", "TypeScript", "Vite", "Local storage"],
     status: "In development",
     featured: true,
-    githubUrl: "https://github.com/flegardev/studentski-denar",
+    githubUrl: "https://github.com/flegardev/Studentski-denar",
     accent: "from-[#d7d2ca] to-[#d6b55e]",
     metric: "Finance tool",
     screenshots: [
@@ -256,7 +256,7 @@ export const projects: Project[] = [
     stack: ["React", "TypeScript", "Vite", "Tailwind CSS"],
     status: "In development",
     featured: true,
-    githubUrl: "https://github.com/flegardev/pulse-fitness-tracker",
+    githubUrl: "https://github.com/flegardev/Pulse-fitness-tracker",
     accent: "from-[#d7d2ca] to-[#d87c68]",
     metric: "Health app",
     screenshots: [
@@ -312,7 +312,7 @@ export const projects: Project[] = [
     stack: ["JavaScript", "Chrome Extension", "React", "Browser APIs"],
     status: "MVP",
     featured: true,
-    githubUrl: "https://github.com/flegardev/avtonet-garage",
+    githubUrl: "https://github.com/flegardev/Avtonet-garage",
     accent: "from-[#d7d2ca] to-[#9eb0bd]",
     metric: "Vehicle tool",
     screenshots: [
@@ -368,7 +368,7 @@ export const projects: Project[] = [
     stack: ["JavaScript", "Chrome Extension", "Local storage", "Playwright"],
     status: "In development",
     featured: true,
-    githubUrl: "https://github.com/flegardev/auto-life-logger",
+    githubUrl: "https://github.com/flegardev/Auto-life-logger",
     accent: "from-[#d7d2ca] to-[#82a8e8]",
     metric: "Focus tracker",
     screenshots: [
@@ -424,7 +424,7 @@ export const projects: Project[] = [
     stack: ["JavaScript", "Chrome Extension", "Browser APIs", "Playwright"],
     status: "MVP",
     featured: true,
-    githubUrl: "https://github.com/flegardev/youtube-focus",
+    githubUrl: "https://github.com/flegardev/YouTube-focus",
     accent: "from-[#d7d2ca] to-[#d85f5f]",
     metric: "Focus extension",
     screenshots: [
@@ -480,7 +480,7 @@ export const projects: Project[] = [
     stack: ["Next.js", "Express", "PostgreSQL", "Prisma"],
     status: "MVP",
     featured: false,
-    githubUrl: "https://github.com/flegardev/fullstack-template",
+    githubUrl: "https://github.com/flegardev/Fullstack-template",
     accent: "from-[#d7d2ca] to-[#68d4c5]",
     metric: "Build system",
     screenshots: [
@@ -522,7 +522,7 @@ export const projects: Project[] = [
     stack: ["Python", "ccxt", "pandas", "scikit-learn"],
     status: "Case study",
     featured: false,
-    githubUrl: "https://github.com/flegardev/ai-bot",
+    githubUrl: "https://github.com/flegardev/AI-bot",
     accent: "from-[#d7d2ca] to-[#6d8cff]",
     metric: "Trading research",
     screenshots: [],
@@ -592,7 +592,7 @@ export const projects: Project[] = [
     stack: ["Next.js", "React", "TypeScript", "Supabase Auth", "PostgreSQL", "Tailwind CSS"],
     status: "Live",
     featured: true,
-    githubUrl: "https://github.com/flegardev/recepti",
+    githubUrl: "https://github.com/flegardev/Recepti",
     demoUrl: "https://recepti-rho.vercel.app",
     accent: "from-[#d7d2ca] to-[#e11d48]",
     metric: "Household PWA",
