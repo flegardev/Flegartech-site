@@ -1,42 +1,33 @@
-import Image from "next/image";
-
 type BrandLogoProps = {
-  preload?: boolean;
-  size?: "header" | "hero" | "footer";
+  size?: "header" | "footer";
+  inverted?: boolean;
 };
 
-export function BrandLogo({ preload = false, size = "header" }: BrandLogoProps) {
-  if (size === "hero") {
-    return (
-      <Image
-        src="/brand/tini-flegar-banner-dark.png"
-        alt="Tini Flegar — Software · IT · Fullstack"
-        width={1200}
-        height={675}
-        preload={preload}
-        sizes="(max-width: 640px) 90vw, 32rem"
-        className="h-auto w-full rounded-sm object-contain"
-      />
-    );
-  }
+export function BrandLogo({ size = "header", inverted = false }: BrandLogoProps) {
+  const foreground = inverted ? "text-white" : "text-black";
+  const muted = inverted ? "text-white/70" : "text-black/65";
 
   return (
-    <span className="flex items-center gap-3">
-      <Image
-        src="/brand/tini-flegar-profile-dark.png"
-        alt=""
-        width={768}
-        height={768}
-        preload={preload}
-        sizes={size === "footer" ? "44px" : "40px"}
-        className={`${size === "footer" ? "h-11 w-11" : "h-10 w-10"} rounded-full border border-white/15 object-cover`}
-      />
-      <span className="min-w-0 leading-none">
-        <span className="font-brand block truncate text-xl font-semibold tracking-tight text-white">
-          Tini Flegar
+    <span className={`inline-flex items-center ${size === "footer" ? "gap-5" : "gap-3.5"}`}>
+      <span
+        aria-hidden="true"
+        className={`font-brand grid shrink-0 place-items-center border ${
+          size === "footer" ? "h-16 w-16 text-[2.7rem]" : "h-11 w-11 text-[1.95rem]"
+        } ${inverted ? "border-white/35" : "border-black/20"} ${foreground}`}
+      >
+        F
+      </span>
+      <span className="min-w-0">
+        <span
+          className={`font-brand block leading-none tracking-[-0.03em] ${
+            size === "footer" ? "text-3xl" : "text-[1.35rem]"
+          } ${foreground}`}
+        >
+          FlegarDev
         </span>
-        <span className="mt-1 block truncate text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-zinc-400">
-          Full-Stack Developer
+        <span className={`my-1.5 block h-px w-full ${inverted ? "bg-white/45" : "bg-black/35"}`} />
+        <span className={`block whitespace-nowrap text-[0.52rem] font-semibold uppercase tracking-[0.23em] ${muted}`}>
+          Software · IT · Fullstack
         </span>
       </span>
     </span>

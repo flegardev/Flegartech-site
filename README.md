@@ -1,67 +1,47 @@
-# FlegarTech Site
+# FlegarDev
 
-Official portfolio website for Tini Flegar (FlegarTech), built with Next.js 15, React 19, Tailwind CSS, and Framer Motion.
+The production portfolio of Tini Flegar: a clean, accessible showcase for full-stack software, product engineering and practical automation.
 
-![FlegarTech Homepage Showcase](docs/screenshots/homepage.png)
+## Stack
 
-## Overview
+- Next.js 16 App Router and React 19
+- TypeScript and Tailwind CSS 4
+- GitHub REST API repository catalog
+- Native Vercel deployment with hourly ISR refreshes
+- Metadata, Open Graph image, sitemap, robots and web manifest
 
-**FlegarTech Site** is the official portfolio and engineering showcase platform for software developer Tini Flegar. Built using Next.js 15 (App Router) and React 19, it highlights full-stack web applications, technical projects, architecture breakdowns, skill matrices, and direct contact avenues.
+## Local development
 
-## Key Features
-
-* **Project Showcase Engine**: Filterable portfolio showcase with tech stack tags, repository links, and live demo buttons.
-* **Dynamic Animations**: Smooth scroll-triggered reveal animations built with Motion (`framer-motion`).
-* **Responsive Dark/Light Visual Design**: Polished layout using modern typography and Tailwind CSS visual design tokens.
-* **Interactive Contact Form**: Direct client communication workflow with client-side form validation.
-* **Optimized Performance**: Next.js App Router static site generation (SSG) with optimized image assets.
-
-## Tech Stack
-
-* **Framework**: Next.js 15 (App Router), React 19, TypeScript
-* **Styling**: Tailwind CSS, PostCSS
-* **Animation**: Motion (`framer-motion`), Lucide React icons
-* **Deployment**: Vercel (`https://flegartech-site-main.vercel.app`)
-
-## Getting Started
-
-### Prerequisites
-* Node.js 18+
-* pnpm (or npm)
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/flegardev/Flegartech-site.git
-   cd flegartech-site
-   ```
-
-2. Install dependencies:
-   ```bash
-   pnpm install
-   ```
-
-3. Run the development server:
-   ```bash
-   pnpm dev
-   ```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## Development Commands
+Node.js 22 or newer is required.
 
 ```bash
-pnpm dev        # Run Next.js dev server
-pnpm build      # Build production bundle
-pnpm start      # Run production server
-pnpm lint       # Run ESLint audit
+npm install
+npm run dev
 ```
 
-## Deployment
+Open [http://localhost:3000](http://localhost:3000).
 
-Deployed on Vercel at [https://flegartech-site-main.vercel.app](https://flegartech-site-main.vercel.app).
+## Quality checks
 
-## License
+```bash
+npm run typecheck
+npm run lint
+npm run build
+```
 
-This project is open-source software.
+## Repository data
+
+The site resolves the GitHub username in this order:
+
+1. `GITHUB_USERNAME`
+2. Vercel's `VERCEL_GIT_REPO_OWNER`
+3. GitHub Actions' `GITHUB_REPOSITORY_OWNER`
+4. The local default, `flegardev`
+
+Forks and archived repositories are excluded. Topics, languages and descriptions drive project categories and search. A curated catalog is used when GitHub is unavailable or the account has no public repositories.
+
+`GITHUB_TOKEN` is optional and only needed for higher GitHub API limits. On Vercel, the project catalog is regenerated at most once per hour.
+
+## Deploying
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for the manual Vercel import checklist.

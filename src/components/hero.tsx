@@ -1,68 +1,63 @@
-import Link from "next/link";
-import { ArrowRight, Mail, ShieldCheck } from "lucide-react";
-import { BrandLogo } from "@/components/brand-logo";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { GitHubMark } from "@/components/github-mark";
+import { siteConfig } from "@/data/site";
 
-const stats = [
-  ["Product-minded", "Focused scope"],
-  ["Accessible UI", "Clear interaction"],
-  ["Full-stack", "Web apps & APIs"],
-];
+const skillChips = ["Next.js", "React", "TypeScript", "APIs", "PostgreSQL", "AI systems"];
 
-export function Hero() {
+type HeroProps = {
+  showGitHub: boolean;
+};
+
+export function Hero({ showGitHub }: HeroProps) {
   return (
-    <section id="home" className="relative pt-24">
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.055)_1px,transparent_1px)] bg-[size:52px_52px] opacity-35" />
-      <div className="absolute left-1/2 top-28 h-72 w-72 -translate-x-1/2 rounded-full bg-white/[0.055] blur-3xl" />
-      <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 sm:py-14 lg:min-h-[calc(88svh-6rem)] lg:grid-cols-[1.04fr_0.96fr] lg:px-8">
-        <div className="max-w-3xl">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/[0.055] px-3 py-2 text-sm text-zinc-200">
-            <ShieldCheck className="h-4 w-4" aria-hidden="true" />
-            Tini Flegar · Software · IT · Fullstack
-          </div>
-          <h1 className="text-5xl font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-7xl">
-            Full-stack software with a deliberate point of view.
+    <section id="home" className="relative overflow-hidden border-b border-black/10">
+      <div className="hero-grid absolute inset-0" aria-hidden="true" />
+      <div className="page-shell relative grid min-h-[calc(100svh-5.25rem)] items-center gap-14 py-20 lg:grid-cols-[1.18fr_0.82fr] lg:py-24">
+        <div className="max-w-4xl">
+          <p className="eyebrow mb-7">Independent developer · Slovenia / Europe</p>
+          <h1 className="font-brand text-[clamp(3.9rem,9vw,8.8rem)] leading-[0.84] tracking-[-0.055em]">
+            Digital products,
+            <span className="block italic">built end to end.</span>
           </h1>
-          <p className="font-editorial mt-6 max-w-2xl text-2xl leading-8 text-zinc-300 sm:text-3xl">
-            I&apos;m Tini Flegar, a Full-Stack Developer working across software, IT and finance.
+          <p className="mt-9 max-w-2xl text-lg leading-8 text-black/64 sm:text-xl">
+            I&apos;m Tini Flegar, the developer behind FlegarDev. I turn practical ideas into focused,
+            reliable software—from the first interface to the final API.
           </p>
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="#projects"
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-md bg-[#eee8de] px-5 text-sm font-semibold text-[#090909] shadow-[0_18px_46px_rgba(238,232,222,0.12)] transition hover:bg-white active:translate-y-px"
-            >
-              View Projects
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-            <Link
-              href="#contact"
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-md border border-white/15 px-5 text-sm font-semibold text-white transition hover:border-[#eee8de]/60 hover:bg-white/[0.08] active:translate-y-px"
-            >
-              Contact Me
-              <Mail className="h-4 w-4" aria-hidden="true" />
-            </Link>
+
+          <div className="mt-9 flex flex-wrap gap-2" aria-label="Core skills">
+            {skillChips.map((skill) => (
+              <span key={skill} className="border border-black/15 bg-white px-3.5 py-2 text-xs font-medium text-black/68">
+                {skill}
+              </span>
+            ))}
+          </div>
+
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+            <a href="#projects" className="button-primary">
+              Explore projects
+              <ArrowDown className="h-4 w-4" aria-hidden="true" />
+            </a>
+            {showGitHub ? (
+              <a href={siteConfig.githubUrl} target="_blank" rel="noreferrer" className="button-secondary">
+                <GitHubMark className="h-4 w-4" />
+                GitHub profile
+                <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </a>
+            ) : null}
           </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-[32rem]">
-          <div className="absolute inset-8 rounded-full bg-white/[0.055] blur-3xl" />
-          <div className="relative overflow-hidden rounded-lg border border-white/10 bg-[#0b0b0b]/90 p-6 shadow-2xl shadow-black/35 backdrop-blur">
-            <div className="mb-7">
-              <BrandLogo preload size="hero" />
-              <p className="mt-4 max-w-sm text-sm leading-6 text-zinc-400">
-                Selected web applications, dashboards, automation tools and production-minded experiments.
-              </p>
+        <div className="relative mx-auto hidden w-full max-w-[30rem] lg:block" aria-hidden="true">
+          <div className="aspect-square rounded-full border border-black/15 bg-white/70 shadow-[0_30px_100px_rgba(0,0,0,0.08)]">
+            <div className="font-brand grid h-full place-items-center text-[20rem] leading-none tracking-[-0.08em] text-black">
+              F
             </div>
-            <div className="grid gap-3 sm:grid-cols-3">
-              {stats.map(([label, value]) => (
-                <div key={label} className="rounded-md border border-white/10 bg-[#050505]/72 p-4">
-                  <p className="text-lg font-semibold text-white">{label}</p>
-                  <p className="mt-1 text-sm text-zinc-400">{value}</p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-4 rounded-md border border-white/15 bg-white/[0.05] px-4 py-3 text-sm text-zinc-200">
-              Grounded work, honest status labels and verification-backed documentation.
-            </div>
+          </div>
+          <div className="absolute -bottom-7 -left-12 w-64 border border-black bg-white p-5">
+            <div className="h-px w-full bg-black" />
+            <p className="mt-3 text-[0.64rem] font-semibold uppercase tracking-[0.32em] text-black/65">
+              Software · IT · Fullstack
+            </p>
           </div>
         </div>
       </div>

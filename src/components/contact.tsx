@@ -1,46 +1,47 @@
-import { FolderGit, Mail } from "lucide-react";
-import { ContactForm } from "@/components/contact-form";
+import { ArrowRight, ArrowUpRight, Mail } from "lucide-react";
+import { GitHubMark } from "@/components/github-mark";
+import { SectionHeading } from "@/components/section-heading";
 import { siteConfig } from "@/data/site";
 
-export function Contact() {
+type ContactProps = {
+  showGitHub: boolean;
+};
+
+export function Contact({ showGitHub }: ContactProps) {
   return (
-    <section id="contact" className="px-4 pb-20 sm:px-6 lg:px-8">
-      <div className="mx-auto grid max-w-7xl gap-8 rounded-lg border border-white/15 bg-white/[0.04] p-6 shadow-[0_0_70px_rgba(255,255,255,0.035)] md:grid-cols-[0.9fr_1.1fr] md:p-8">
-        <div>
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-zinc-300">
-            Contact
-          </p>
-          <h2 className="text-3xl font-semibold tracking-normal text-white sm:text-4xl">
-            Have a project in mind? Let&apos;s talk.
-          </h2>
-          <p className="mt-5 text-base leading-7 text-zinc-300">
-            Send a short brief, an early idea or a specific build request. I can help shape it into a
-            focused web application, dashboard or custom software workflow.
-          </p>
-          <p className="mt-3 text-sm leading-6 text-zinc-400">
-            Delate v Sloveniji? Pišete lahko tudi v slovenščini.
-          </p>
-          <div className="mt-8 space-y-3 text-sm text-zinc-300">
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="flex items-center gap-3 hover:text-white"
-            >
-              <Mail className="h-5 w-5 text-[#eee8de]" aria-hidden="true" />
-              {siteConfig.email}
-            </a>
-            <a
-              href={siteConfig.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 hover:text-white"
-            >
-              <FolderGit className="h-5 w-5 text-[#eee8de]" aria-hidden="true" />
-              {siteConfig.githubHandle}
-              <span className="sr-only"> (opens in a new tab)</span>
+    <section id="contact" className="bg-[#f3f2ee] py-24 sm:py-32">
+      <div className="page-shell">
+        <SectionHeading number="04" eyebrow="Contact" title="Have a useful idea? Let’s make it real." />
+        <div className="grid gap-10 lg:grid-cols-[1.4fr_0.6fr] lg:items-end">
+          <div>
+            <p className="max-w-2xl text-lg leading-8 text-black/65">
+              Share the problem, the audience and where the idea stands today. I&apos;ll reply with clear next steps—usually within two business days.
+            </p>
+            <a href={`mailto:${siteConfig.email}?subject=Project%20inquiry%20for%20FlegarDev`} className="button-primary mt-9">
+              Start a conversation
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </a>
           </div>
+
+          <div className="divide-y divide-black/15 border-y border-black/15">
+            <a href={`mailto:${siteConfig.email}`} className="group flex items-center justify-between py-5 text-sm">
+              <span className="flex items-center gap-3">
+                <Mail className="h-4 w-4" aria-hidden="true" />
+                {siteConfig.email}
+              </span>
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+            </a>
+            {showGitHub ? (
+              <a href={siteConfig.githubUrl} target="_blank" rel="noreferrer" className="group flex items-center justify-between py-5 text-sm">
+                <span className="flex items-center gap-3">
+                  <GitHubMark className="h-4 w-4" />
+                  GitHub / {siteConfig.githubUsername}
+                </span>
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+              </a>
+            ) : null}
+          </div>
         </div>
-        <ContactForm email={siteConfig.email} />
       </div>
     </section>
   );

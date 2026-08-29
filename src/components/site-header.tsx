@@ -1,184 +1,102 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { BrandLogo } from "@/components/brand-logo";
 
-const navItems = [
-  { label: "Home", href: "/#home", section: "home" },
-  { label: "Services", href: "/#services", section: "services" },
-  { label: "Projects", href: "/#projects", section: "projects", route: "/projects" },
-  { label: "About", href: "/#about", section: "about" },
-  { label: "Blog", href: "/blog", route: "/blog" },
-  { label: "Contact", href: "/#contact", section: "contact" },
-] as const;
-
-const sectionIds = navItems.flatMap((item) => ("section" in item && item.section ? [item.section] : []));
-
-function useActiveSection(enabled: boolean) {
-  const [active, setActive] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (!enabled) return;
-    const sections = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter((element): element is HTMLElement => element !== null);
-    if (sections.length === 0) return;
-
-    const visible = new Map<string, number>();
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            visible.set(entry.target.id, entry.intersectionRatio);
-          } else {
-            visible.delete(entry.target.id);
-          }
-        }
-        let best: string | null = null;
-        let bestRatio = 0;
-        for (const [id, ratio] of visible) {
-          if (ratio > bestRatio) {
-            best = id;
-            bestRatio = ratio;
-          }
-        }
-        if (best) setActive(best);
-      },
-      { rootMargin: "-20% 0px -55% 0px", threshold: [0, 0.25, 0.5, 1] },
-    );
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, [enabled]);
-
-  return enabled ? active : null;
-}
+const navigation = [
+  { label: "Projects", href: "#projects" },
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Contact", href: "#contact" },
+];
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
   const headerRef = useRef<HTMLElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const firstMobileLinkRef = useRef<HTMLAnchorElement>(null);
-  const activeSection = useActiveSection(pathname === "/");
 
-  // Close the mobile menu on Escape and on clicks outside the header.
   useEffect(() => {
     if (!open) return;
-    const focusFrame = window.requestAnimationFrame(() => firstMobileLinkRef.current?.focus());
-    function onKeyDown(event: KeyboardEvent) {
+
+    function closeOnEscape(event: KeyboardEvent) {
       if (event.key === "Escape") {
         setOpen(false);
         menuButtonRef.current?.focus();
       }
     }
-    function onPointerDown(event: PointerEvent) {
+
+    function closeOutside(event: PointerEvent) {
       if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
         setOpen(false);
       }
     }
-    document.addEventListener("keydown", onKeyDown);
-    document.addEventListener("pointerdown", onPointerDown);
+
+    document.addEventListener("keydown", closeOnEscape);
+    document.addEventListener("pointerdown", closeOutside);
     return () => {
-      window.cancelAnimationFrame(focusFrame);
-      document.removeEventListener("keydown", onKeyDown);
-      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", closeOnEscape);
+      document.removeEventListener("pointerdown", closeOutside);
     };
   }, [open]);
 
-  function isActive(item: (typeof navItems)[number]) {
-    if ("route" in item && item.route && pathname.startsWith(item.route)) return true;
-    if (pathname !== "/") return false;
-    return "section" in item && item.section === activeSection;
-  }
-
   return (
-    <header
-      ref={headerRef}
-      className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#050505]/90 pt-[env(safe-area-inset-top)] backdrop-blur-xl"
-    >
-      <nav
-        aria-label="Main"
-        className="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
-      >
-        <Link
-          href="/#home"
-          className="flex items-center"
-          aria-label="Tini Flegar home"
-          onClick={() => setOpen(false)}
-        >
-          <BrandLogo preload />
-        </Link>
-        <div className="hidden items-center gap-6 text-sm text-zinc-300 md:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              aria-current={isActive(item) ? "true" : undefined}
-              className={`transition hover:text-white ${
-                isActive(item) ? "font-semibold text-[#f4f1ec]" : ""
-              }`}
-            >
+    <header ref={headerRef} className="sticky top-0 z-50 border-b border-black/10 bg-white/92 backdrop-blur-xl">
+      <nav className="page-shell flex h-[5.25rem] items-center justify-between" aria-label="Primary navigation">
+        <a href="#home" onClick={() => setOpen(false)}>
+          <BrandLogo />
+        </a>
+
+        <div className="hidden items-center gap-8 md:flex">
+          {navigation.map((item) => (
+            <a key={item.href} href={item.href} className="nav-link">
               {item.label}
-            </Link>
+            </a>
           ))}
         </div>
-        <div className="flex items-center gap-3">
-          <Link
-            href="/#contact"
-            className="hidden h-10 items-center gap-2 rounded-md bg-[#eee8de] px-4 text-sm font-semibold text-[#090909] shadow-[0_16px_40px_rgba(238,232,222,0.12)] transition hover:bg-white active:translate-y-px sm:inline-flex"
-          >
-            Start a Project
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </Link>
-          <button
-            ref={menuButtonRef}
-            type="button"
-            onClick={() => setOpen((value) => !value)}
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-            aria-label={open ? "Close menu" : "Open menu"}
-            className="grid h-10 w-10 place-items-center rounded-md border border-white/15 text-zinc-200 transition hover:border-[#eee8de]/60 hover:text-white md:hidden"
-          >
-            {open ? (
-              <X className="h-5 w-5" aria-hidden="true" />
-            ) : (
-              <Menu className="h-5 w-5" aria-hidden="true" />
-            )}
-          </button>
-        </div>
-      </nav>
-      {open ? (
-        <div
-          id="mobile-nav"
-          className="max-h-[calc(100dvh-4.5rem)] overflow-y-auto overscroll-contain border-t border-white/10 bg-[#050505]/98 px-4 pb-[calc(1.5rem+env(safe-area-inset-bottom))] pt-3 backdrop-blur-xl md:hidden"
+
+        <a
+          href="mailto:flegardev@gmail.com"
+          className="hidden items-center gap-2 border border-black bg-black px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-white hover:text-black sm:inline-flex"
         >
-          <div className="grid gap-1 text-base text-zinc-200">
-            {navItems.map((item, index) => (
-              <Link
-                ref={index === 0 ? firstMobileLinkRef : undefined}
-                key={item.label}
+          Let&apos;s talk
+          <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+        </a>
+
+        <button
+          ref={menuButtonRef}
+          type="button"
+          aria-label={open ? "Close navigation" : "Open navigation"}
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
+          onClick={() => setOpen((current) => !current)}
+          className="grid h-11 w-11 place-items-center border border-black/20 md:hidden"
+        >
+          {open ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
+        </button>
+      </nav>
+
+      {open ? (
+        <div id="mobile-navigation" className="border-t border-black/10 bg-white px-5 pb-6 pt-3 md:hidden">
+          <div className="grid">
+            {navigation.map((item) => (
+              <a
+                key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                aria-current={isActive(item) ? "true" : undefined}
-                className={`rounded-md px-3 py-3 transition hover:bg-white/[0.08] hover:text-white ${
-                  isActive(item) ? "font-semibold text-[#f4f1ec]" : ""
-                }`}
+                className="border-b border-black/10 py-4 text-lg"
               >
                 {item.label}
-              </Link>
+              </a>
             ))}
           </div>
-          <Link
-            href="/#contact"
-            onClick={() => setOpen(false)}
-            className="mt-3 inline-flex h-11 w-full items-center justify-center gap-2 rounded-md bg-[#eee8de] px-4 text-sm font-semibold text-[#090909] transition hover:bg-white"
+          <a
+            href="mailto:flegardev@gmail.com"
+            className="mt-5 inline-flex w-full items-center justify-center gap-2 bg-black px-5 py-3.5 text-sm font-semibold text-white"
           >
-            Start a Project
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </Link>
+            Start a conversation
+            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+          </a>
         </div>
       ) : null}
     </header>

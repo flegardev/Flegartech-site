@@ -1,9 +1,8 @@
 {
-  "name": "flegartech-site",
+  "name": "flegardev-portfolio",
   "version": "0.1.0",
   "private": true,
-  "description": "Personal portfolio for Tini Flegar, Full-Stack Developer · IT & Finance.",
-  "homepage": "https://flegartech-site-main.vercel.app",
+  "description": "FlegarDev — the full-stack software portfolio of Tini Flegar.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/flegardev/Flegartech-site.git"
@@ -20,7 +19,6 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@vercel/analytics": "^2.0.1",
     "lucide-react": "^1.17.0",
     "next": "16.2.12",
     "react": "19.2.4",
@@ -36,6 +34,9 @@
     "sharp": "^0.35.3",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=22"
   },
   "overrides": {
     "postcss": "^8.5.25",
