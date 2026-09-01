@@ -1,7 +1,7 @@
 # 🎓 FlegarTech Digital Agency Site — Beginner's Learning Guide
 
 ## What This Project Does
-**flegartech-site** is the official agency marketing portfolio website built with Next.js 15, React 19, Tailwind CSS, and Framer Motion. It features scroll-driven animations, responsive project showcase galleries, and honeypot-protected Next.js Server Action contact forms.
+**flegartech-site** is the official agency marketing portfolio website built with Next.js 16 (Turbopack), React 19, and Tailwind CSS. It features responsive project showcase galleries, categorized project filters, and dynamic metadata generation.
 
 ---
 
@@ -11,26 +11,26 @@
 ENTRY POINT
   │  (src/app/layout.tsx & src/app/page.tsx)
   ▼
-NEXT.JS 15 APP ROUTER & METADATA
-  │  (OpenGraph Card Generator, JSON-LD Schema Markup, Viewport Settings)
+NEXT.JS 16 APP ROUTER & METADATA
+  │  (OpenGraph Generator, robots.ts, sitemap.ts, manifest.ts)
   ▼
-SERVER ACTIONS & EMAIL INTEGRATION
-  │  (src/app/actions.ts - sendContactEmail, Honeypot Spam Defense, Resend API)
+DATA CATALOG LAYER
+  │  (src/data/projects.ts - Project Catalog, src/data/site.ts - Agency Metadata)
   ▼
-CLIENT UI & ANIMATION LAYER
-     (src/components/hero.tsx, projects.tsx, contact-form.tsx, Framer Motion)
+CLIENT UI & COMPONENT LAYER
+     (src/components/hero.tsx, projects-browser.tsx, contact.tsx, tech-stack.tsx)
 ```
 
 ---
 
 ## 🎯 Core Files to Study First (Recommended Learning Order)
 
-1. [`src/app/actions.ts`](file:///C:/Users/tinif/repos/flegartech-site/src/app/actions.ts)
-   - **Why study first**: Shows modern Next.js 15 Server Actions (`"use server"`), honeypot antispam defense, payload validation, and Resend email API calls.
-2. [`src/components/contact-form.tsx`](file:///C:/Users/tinif/repos/flegartech-site/src/components/contact-form.tsx)
-   - **Why study next**: Teaches React 19 `useActionState` and `useTransition` hooks for handling form submission loading states.
-3. [`src/components/projects.tsx`](file:///C:/Users/tinif/repos/flegartech-site/src/components/projects.tsx)
-   - **Why study third**: Demonstrates Framer Motion viewport animation triggers, tag filters, and modal image galleries.
+1. [`src/data/projects.ts`](file:///C:/Users/tinif/repos/flegartech-site/src/data/projects.ts)
+   - **Why study first**: Shows how to structure strongly typed portfolio project catalogs, tags, screenshots, and live demo links.
+2. [`src/components/projects-browser.tsx`](file:///C:/Users/tinif/repos/flegartech-site/src/components/projects-browser.tsx)
+   - **Why study next**: Teaches client-side category filtering, search debouncing, and responsive grid layouts in React 19.
+3. [`src/components/contact.tsx`](file:///C:/Users/tinif/repos/flegartech-site/src/components/contact.tsx)
+   - **Why study third**: Demonstrates clean contact CTA surfaces and direct interaction points.
 
 ---
 
@@ -43,4 +43,8 @@ CLIENT UI & ANIMATION LAYER
 2. **Build for Production**:
    ```bash
    npm run build
+   ```
+3. **Lint Codebase**:
+   ```bash
+   npm run lint
    ```
