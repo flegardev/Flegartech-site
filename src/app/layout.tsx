@@ -1,10 +1,14 @@
 import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import { siteConfig } from "@/data/site";
 import "./globals.css";
 
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
+const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
+
 export const viewport: Viewport = {
-  themeColor: "#ffffff",
-  colorScheme: "light",
+  themeColor: [{ media: "(prefers-color-scheme: light)", color: "#f8faf9" }, { media: "(prefers-color-scheme: dark)", color: "#101916" }],
+  colorScheme: "light dark",
   viewportFit: "cover",
 };
 
@@ -46,8 +50,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${geist.variable} ${mono.variable}`}>
+        <script dangerouslySetInnerHTML={{ __html: "try{const t=localStorage.getItem('flegardev-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch{}" }} />
         <a href="#main" className="skip-link">
           Skip to content
         </a>

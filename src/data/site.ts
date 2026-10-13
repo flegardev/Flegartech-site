@@ -13,7 +13,7 @@ function normalizeSiteUrl(value: string): string {
   return withProtocol.replace(/\/$/, "");
 }
 
-const defaultSiteUrl = "https://flegartech-site-main.vercel.app";
+const defaultSiteUrl = "https://flegardev-portfolio.vercel.app";
 
 export const siteConfig = {
   brandName: "FlegarDev",

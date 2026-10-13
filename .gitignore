@@ -67,3 +67,6 @@ Thumbs.db
 .env.local
 .env.*.local
 promo/
+# Browser reports may contain runtime state; keep them out of Git.
+test-results/
+playwright-report/

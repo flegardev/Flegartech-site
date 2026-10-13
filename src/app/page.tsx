@@ -1,54 +1,21 @@
-import { About } from "@/components/about";
-import { Contact } from "@/components/contact";
-import { Hero } from "@/components/hero";
-import { Projects } from "@/components/projects";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
-import { TechStack } from "@/components/tech-stack";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowDown, ArrowRight, ArrowUpRight, Braces, Database, GitBranch, ShieldCheck } from "lucide-react";
+import { PortfolioNav } from "@/components/portfolio-nav";
+import { WorkCatalog } from "@/components/work-catalog";
+import { selectedWork } from "@/data/selected-work";
 import { siteConfig } from "@/data/site";
-import { getRepositories } from "@/lib/github";
-
-// Vercel refreshes the statically rendered repository catalog once per hour.
-export const revalidate = 3600;
-
-export default async function Home() {
-  const repositories = await getRepositories();
-  const hasPublicGitHubProfile = repositories.source === "github";
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: siteConfig.name,
-    alternateName: siteConfig.brandName,
-    url: siteConfig.url,
-    email: `mailto:${siteConfig.email}`,
-    jobTitle: siteConfig.professionalTitle,
-    description: siteConfig.description,
-    ...(hasPublicGitHubProfile ? { sameAs: [siteConfig.githubUrl] } : {}),
-    knowsAbout: [
-      "Full-stack web development",
-      "Product design",
-      "API development",
-      "Data modeling",
-      "Artificial intelligence",
-      "Software automation",
-    ],
-  };
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
-      />
-      <SiteHeader />
-      <main id="main">
-        <Hero showGitHub={hasPublicGitHubProfile} />
-        <Projects result={repositories} />
-        <About />
-        <TechStack />
-        <Contact showGitHub={hasPublicGitHubProfile} />
-      </main>
-      <SiteFooter />
-    </>
-  );
+export default function Home() {
+ const jsonLd = { "@context": "https://schema.org", "@type": "Person", name: siteConfig.name, url: siteConfig.url, sameAs: [siteConfig.githubUrl], email: "mailto:" + siteConfig.email, description: siteConfig.description };
+ return <><script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd).replace(/</g, "\\u003c")}} /><PortfolioNav /><main id="main">
+  <section className="hero shell" id="home"><div className="hero-copy"><p className="label intro-label"><span className="accent-line" /> Software engineer · Slovenia</p><h1>From a useful idea.<br />To a <em>working product.</em></h1><p className="hero-description">I’m Tini. I build interfaces, APIs, and the systems behind them—with an eye for the details people actually use.</p><div className="hero-actions"><a href="#work" className="button primary">Explore my work <ArrowDown size={17} aria-hidden="true" /></a><a href={siteConfig.githubUrl} target="_blank" rel="noreferrer" className="text-link">View GitHub <ArrowUpRight size={17} aria-hidden="true" /></a></div><div className="hero-footnote"><span>Full-stack engineering</span><span>Thoughtful interfaces</span><span>Practical tools</span></div></div>
+  <div className="hero-project"><div className="preview-topline"><span className="label">Inside a real project</span><span className="preview-dot" aria-hidden="true" /></div><Link href="/work/recepti" className="hero-preview"><Image src="/projects/recepti/audited-preview.webp" alt="Nana’s Recipes live public demo showing a sample pantry and ranked recipes" width={1440} height={1000} sizes="(max-width: 767px) 100vw, 45vw" priority /></Link><div className="preview-caption"><div><span className="label">01 / Household software</span><p>Nana’s Recipes</p></div><Link href="/work/recepti" aria-label="Read the Nana’s Recipes case study" className="circle-link"><ArrowUpRight size={22} aria-hidden="true" /></Link></div></div></section>
+  <div className="stack-strip"><div className="shell"><span className="label">Built with purpose</span><span>TypeScript</span><span>React / Next.js</span><span>PHP / Python</span><span>PostgreSQL</span><span>GitHub Actions</span></div></div>
+  <section className="section shell" id="work"><div className="section-title"><div><p className="label">01 / Selected work</p><h2>Different problems.<br />The same care.</h2></div><p>From a household kitchen to a repository analysis engine. A closer look at the product, the architecture, and the decisions behind it.</p></div>
+  <div className="featured-grid">{selectedWork.slice(0,3).map((work, index) => <article className={"featured-project featured-" + index} key={work.slug}><Link href={"/work/" + work.slug} className="project-image">{work.image ? <Image src={work.image} alt={work.imageAlt ?? work.name} width={1440} height={1000} sizes={index === 0 ? "(max-width: 767px) 100vw, 60vw" : "(max-width: 767px) 100vw, 40vw"} /> : null}<span className="image-link"><ArrowUpRight size={22} aria-hidden="true" /></span></Link><div className="project-heading"><span className="label">{work.category}</span><span className="status">{work.status}</span></div><h3><Link href={"/work/" + work.slug}>{work.name}</Link></h3><p>{work.summary}</p><ul className="tags" aria-label={work.name + " technologies"}>{work.stack.map((skill) => <li key={skill}>{skill}</li>)}</ul><Link className="text-link" href={"/work/" + work.slug}>Read the case study <ArrowRight size={16} aria-hidden="true" /></Link></article>)}</div>
+  <div className="catalog-heading"><h3>Explore the engineering</h3><p>Source-backed descriptions. Clear demo status.</p></div><WorkCatalog entries={selectedWork.map(({slug, name, category, summary, stack, status}) => ({slug, name, category, summary, stack, status}))} /></section>
+  <section className="approach-band" id="approach"><div className="shell section"><div className="section-title"><div><p className="label">02 / How I build</p><h2>The interface is<br />only the beginning.</h2></div><p>A polished screen matters. So do the authorization boundary, the unhappy path, and the next person reading the code.</p></div><div className="principles">{[{Icon:Braces,title:"Start with the workflow",text:"Make the useful path clear. Keep the domain logic separate from the interface."},{Icon:Database,title:"Respect the data",text:"Model ownership explicitly, validate at the boundary, and migrate deliberately."},{Icon:ShieldCheck,title:"Design for failure",text:"Show honest loading and error states. Keep sensitive operations on the server."},{Icon:GitBranch,title:"Make changes reviewable",text:"Small boundaries, meaningful tests, version-controlled source and repeatable builds."}].map(({Icon,title,text}) => <article key={title}><Icon size={25} strokeWidth={1.5} aria-hidden="true" /><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
+  <section className="section shell about-section" id="about"><div><p className="label">03 / About</p><h2>Curious by nature.<br />Practical by choice.</h2></div><div className="about-copy"><p className="large-copy">I’m an independent developer based in Slovenia, building software around everyday problems and technical questions that interest me.</p><p>My repositories span private household tools, educational applications, static code analysis and calculation engines. I enjoy connecting the pieces: a clear interface, understandable domain logic, and a dependable data boundary.</p><p>This portfolio presents personal projects and source-backed engineering work. Each case study distinguishes what is implemented from what is currently verified in production.</p><div className="skill-columns"><div><h3>Product & interface</h3><p>React · Next.js · TypeScript · CSS<br />Responsive layouts · Playwright</p></div><div><h3>Application & data</h3><p>PHP · Python / FastAPI · Node.js<br />PostgreSQL · Supabase · SQLAlchemy</p></div></div></div></section>
+  <section className="contact-section" id="contact"><div className="shell"><p className="label">04 / Get in touch</p><div className="contact-row"><h2>Let’s build<br /><em>something useful.</em></h2><div><p>Have a product to develop, a system to improve,<br className="desktop-break" /> or an engineering role to discuss?</p><a href={"mailto:" + siteConfig.email} className="contact-email">{siteConfig.email}<ArrowUpRight size={26} aria-hidden="true" /></a></div></div></div></section>
+ </main><footer className="shell portfolio-footer"><span>© 2026 Tini Flegar</span><span>Built with Next.js. Designed with care.</span><a href={siteConfig.githubUrl} target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={14} aria-hidden="true" /></a></footer></>;
 }
