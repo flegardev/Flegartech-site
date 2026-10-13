@@ -1,47 +1,40 @@
-# FlegarDev
+# FlegarDev / Tini Flegar
 
-The production portfolio of Tini Flegar: a clean, accessible showcase for full-stack software, product engineering and practical automation.
+A software-engineer portfolio built with Next.js 16, React 19, TypeScript, Geist fonts, and a restrained light/dark visual identity.
 
-## Stack
+## Product
 
-- Next.js 16 App Router and React 19
-- TypeScript and Tailwind CSS 4
-- GitHub REST API repository catalog
-- Native Vercel deployment with hourly ISR refreshes
-- Metadata, Open Graph image, sitemap, robots and web manifest
+- Five static case studies grounded in accessible source code.
+- Real product screenshots, searchable project catalog, category filters, and useful empty states.
+- Responsive navigation, keyboard focus, persistent color preference, and reduced-motion support.
+- Canonical metadata, sitemap, robots, structured data, generated social image, and security headers.
 
-## Local development
+Project content lives in `src/data/selected-work.ts`. Update operational status only after checking the actual application. Nana's Recipes links to its public sample preview; Borza links to its public homepage and clearly marks its backend outage. WTFCode has no live demo link while its database-backed runtime is unavailable. Drivewise and Pulse are presented as domain modules. No employment history or performance metrics are invented.
 
-Node.js 22 or newer is required.
+## Development
 
-```bash
-npm install
+Use Node.js 22 or 24.
+
+```sh
+npm ci
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+## Verification
 
-## Quality checks
-
-```bash
-npm run typecheck
+```sh
 npm run lint
+npm run typecheck
 npm run build
+npx playwright install chromium
+CI=true npm run test:e2e
+npm audit --omit=dev --audit-level=high
 ```
 
-## Repository data
+On Windows, set `$env:CI='true'` before the browser command, or use the installed Google Chrome through the local default configuration. Browser coverage includes search/reset/filter behavior, theme persistence, mobile menu keyboard handling, four viewport widths, five case-study routes, image loading, and axe checks in both themes.
 
-The site resolves the GitHub username in this order:
+The production dependency audit is clean as of 2026-10-13. The development-only Next ESLint dependency chain still reports an unpatched `braces` advisory. CI gates production dependencies; keep reviewing the full development audit and update when a supported patch becomes available. Do not force a framework downgrade to silence the advisory.
 
-1. `GITHUB_USERNAME`
-2. Vercel's `VERCEL_GIT_REPO_OWNER`
-3. GitHub Actions' `GITHUB_REPOSITORY_OWNER`
-4. The local default, `flegardev`
+## Deployment
 
-Forks and archived repositories are excluded. Topics, languages and descriptions drive project categories and search. A curated catalog is used when GitHub is unavailable or the account has no public repositories.
-
-`GITHUB_TOKEN` is optional and only needed for higher GitHub API limits. On Vercel, the project catalog is regenerated at most once per hour.
-
-## Deploying
-
-See [DEPLOYMENT.md](DEPLOYMENT.md) for the manual Vercel import checklist.
+GitHub is the source of truth: https://github.com/flegardev/Flegartech-site . Connect this repository to Vercel with the Next.js preset and no root-directory override. Pull requests build previews. The canonical URL uses `NEXT_PUBLIC_SITE_URL`, then Vercel's production-domain variable, then `https://flegardev-portfolio.vercel.app`. No database, privileged credentials, or paid service is required.

@@ -1,22 +1,19 @@
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { BrandLogo } from "@/components/brand-logo";
+import { PortfolioNav } from "@/components/portfolio-nav";
 
 export default function NotFound() {
   return (
-    <main id="main" className="page-shell grid min-h-screen place-content-center py-16 text-center">
-      <div className="mx-auto mb-12">
-        <BrandLogo />
-      </div>
-      <p className="eyebrow text-black/65">Error 404</p>
-      <h1 className="font-brand mt-4 text-5xl tracking-[-0.04em] sm:text-7xl">This page has moved on.</h1>
-      <p className="mx-auto mt-5 max-w-md leading-7 text-black/65">
+    <><PortfolioNav /><main id="main" className="shell section">
+      <p className="label">Error 404</p>
+      <h1 style={{fontSize: "clamp(36px, 6vw, 64px)", marginBlock: "24px"}}>This page has moved on.</h1>
+      <p style={{color: "var(--muted)", maxWidth: "480px", lineHeight: 1.8, marginBottom: "32px"}}>
         The address is no longer part of the portfolio. The main page has everything that is currently available.
       </p>
-      <Link href="/" className="button-primary mx-auto mt-8">
+      <Link href="/" className="button primary">
         <ArrowLeft className="h-4 w-4" aria-hidden="true" />
         Return home
       </Link>
-    </main>
+    </main></>
   );
 }
