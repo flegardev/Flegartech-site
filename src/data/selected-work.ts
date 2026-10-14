@@ -25,7 +25,7 @@ export const selectedWork: SelectedWork[] = [
     repository: "https://github.com/flegardev/Borza",
     image: "/projects/borza/audited-home.webp", imageAlt: "Borza Academy German landing page captured from its current public deployment",
     demo: "https://borza-pi.vercel.app", demoLabel: "Explore the public site",
-    status: "Public site · backend unavailable", verification: "Verified on 14 October 2026: reviewed main is deployed on Vercel with the corrected Render API origin and production signing-secret safeguards. The Render image builds; startup remains blocked by the unavailable existing database connection secret. Account-backed features remain unverified.",
+    status: "Public site · backend unavailable", verification: "Verified on 14 October 2026: the frontend deploys reviewed main with the corrected Render API origin. The backend security fix passes CI and its Render image builds; API startup remains blocked by the unavailable existing database connection secret. Account-backed features remain unverified.",
     problem: "Financial learning often separates theory from the decisions beginners actually face. Trading practice also needs clear boundaries around risk and simulated results.",
     solution: "A multilingual Next.js frontend joins authored curriculum, quizzes, calculators and deterministic practice scenarios. FastAPI owns learner state, with SQLAlchemy and Alembic providing the database boundary.",
     decisions: ["Keep authored learning material in version-controlled content.", "Score process and risk discipline separately from profit and loss.", "Separate public learning/demo flows from authenticated learner records.", "Use database migrations; never create or drop production tables during application startup."],
